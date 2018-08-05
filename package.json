@@ -8,7 +8,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,12 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^3.4.10",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
     "eslint-config-prettier": "^2.9.0",
     "flow-bin": "^0.77.0"
   }
