@@ -118,4 +118,5 @@ let questions = {
 export default {
   users: users,
   questions: questions,
+  authedUser: 'tylermcginnis',
 }

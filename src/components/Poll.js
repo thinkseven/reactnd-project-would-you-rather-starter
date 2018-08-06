@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import '../styles.css'
 
-class Question extends Component {
+class Poll extends Component {
   render() {
-    const { name, avatarUrl, questionId, options } = this.props
+    const { name, avatarUrl, options } = this.props
     return (
       <div className="wrapper">
         <div className="top">
           <div className="main">
             <div>
-              <h3>{`${name} asks:`}</h3>
+              <h3>{`Asked by ${name}`}</h3>
             </div>
           </div>
         </div>
@@ -22,22 +21,23 @@ class Question extends Component {
           <div className="seperator" />
           <div className="right">
             <div>
-              <h3>Would You Rather ...</h3>
+              <h3>Results</h3>
             </div>
             {options.map(option => {
-              const { id, text } = option
+              const { yourVote, text, votes, totalVotes } = option
               return (
                 <div>
-                  <input type="radio" id="{id}" name="{id}" checked />
-                  <label for="{text}">{text}</label>
+                  <div
+                    style={{
+                      display: yourVote ? 'block' : 'none',
+                    }}>
+                    Your vote
+                  </div>
+                  <div>{text}</div>
+                  <div>{`${votes} out of ${totalVotes}`}</div>
                 </div>
               )
             })}
-            <div>
-              <button name="submit" type="submit">
-                Submit
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -45,4 +45,4 @@ class Question extends Component {
   }
 }
 
-export default Question
+export default Poll
