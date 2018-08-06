@@ -1,0 +1,38 @@
+div {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid dimgray;
+}
+
+.top {
+  display: flex;
+}
+
+.main {
+  width: 100%;
+  align-self: auto;
+  border-bottom: 2px solid dimgray;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.left {
+  width: 30%;
+  align-self: center;
+}
+
+.seperator {
+}
+
+.right {
+  width: 70%;
+  align-self: center;
+}
