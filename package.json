@@ -13,8 +13,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "flow": "flow",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook-postcss": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
+    "storybook": "npm-run-all -p watch-css storybook-postcss"
   },
   "repository": {
     "type": "git",
