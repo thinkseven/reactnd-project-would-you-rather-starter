@@ -1,5 +1,6 @@
 import '../styles.css'
 import './Question'
 import './Poll'
+import './CreateQuestion'
 import './Score'
 import './LeaderBoard'
