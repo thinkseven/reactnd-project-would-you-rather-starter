@@ -1,3 +1,3 @@
-import '../styles.scss'
+import '../styles.css'
 import './Question'
 import './Poll'
