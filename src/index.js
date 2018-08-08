@@ -1,10 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './styles.css'
+import App from './components/App'
 
-ReactDOM.render(
-  <div className="wrapper">
-    <h3>Under Construction</h3>
-  </div>,
-  document.getElementById('root'),
-)
+ReactDOM.render(<App />, document.getElementById('root'))
