@@ -1,5 +1,7 @@
 import '../styles.css'
 import './Question'
+import './AnsweredQuestion'
+import './UnasweredQuestion'
 import './Poll'
 import './CreateQuestion'
 import './Score'
