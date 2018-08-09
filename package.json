@@ -28,6 +28,8 @@
   },
   "homepage": "https://github.com/thinkseven/reactnd-project-would-you-rather-starter#readme",
   "dependencies": {
+    "@material-ui/core": "^1.4.3",
+    "@material-ui/icons": "^2.0.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",

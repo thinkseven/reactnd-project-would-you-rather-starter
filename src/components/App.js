@@ -2,12 +2,14 @@ import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SecuredRoute from './SecuredRoute'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 class App extends Component {
   render() {
     return (
       <Router>
         <Fragment>
+          <CssBaseline />
           <Switch>
             <Route path="/login" render={() => <div>Login</div>} />
             <SecuredRoute path="/" exact render={() => <div>Home</div>} />
