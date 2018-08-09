@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 import SecuredRoute from './SecuredRoute'
 
 class App extends Component {
@@ -36,4 +37,10 @@ class App extends Component {
   }
 }
 
-export default App
+function mapStateToProps({ authedUser }) {
+  return {
+    loggedin: authedUser !== null && authedUser !== '',
+  }
+}
+
+export default connect(mapStateToProps)(App)

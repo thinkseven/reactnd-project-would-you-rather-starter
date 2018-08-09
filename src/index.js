@@ -17,6 +17,9 @@ const composeEnhancers =
 const enhancer = composeEnhancers()
 const store = createStore(reducer, enhancer)
 
+//store.dispatch(login('tylermcginnis'))
+store.dispatch(logout())
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
