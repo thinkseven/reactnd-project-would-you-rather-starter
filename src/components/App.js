@@ -1,12 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Home from './Home'
+import Login from './Auth/Login'
 
 class App extends Component {
   render() {
@@ -41,8 +37,7 @@ class App extends Component {
             </Switch>
           ) : (
             <Switch>
-              <Route exact path="/login" render={() => <div>Login</div>} />
-              <Redirect to="/login" />
+              <Route path="/" component={Login} />
             </Switch>
           )}
         </Fragment>

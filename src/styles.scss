@@ -1,64 +1,16 @@
-$font-stack: Helvetica, sans-serif;
-$primary-color: #333;
+@import '../node_modules/normalize.css';
 
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
-}
-
-div {
+* {
   box-sizing: border-box;
 }
 
-nav {
+.menu {
   ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    list-style-type: none;
   }
-
   li {
+    padding: 8px;
+    margin: 7px;
     display: inline-block;
   }
-
-  a {
-    display: block;
-    padding: 6px 12px;
-    text-decoration: none;
-  }
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid dimgray;
-}
-
-.top {
-  display: flex;
-}
-
-.main {
-  width: 100%;
-  align-self: auto;
-  border-bottom: 2px solid dimgray;
-}
-
-.bottom {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-
-.left {
-  width: 30%;
-  align-self: center;
-}
-
-.seperator {
-}
-
-.right {
-  width: 70%;
-  align-self: center;
 }

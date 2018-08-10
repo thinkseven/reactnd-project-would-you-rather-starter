@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/thinkseven/reactnd-project-would-you-rather-starter#readme",
   "dependencies": {
+    "normalize.css": "^8.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "^5.0.7",
