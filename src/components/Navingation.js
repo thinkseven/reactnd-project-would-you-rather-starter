@@ -5,6 +5,7 @@ import Logout from './Auth/Logout'
 
 class Navigation extends Component {
   render() {
+    const { name } = this.props
     return (
       <div className="menu">
         <ul>
@@ -15,7 +16,7 @@ class Navigation extends Component {
           <li>
             <Link to="/question/create">New Question</Link>
           </li>
-          <li>Hello, Tyler McGinnis</li>
+          <li>Hello, {`${name}`}</li>
           <li>
             <Logout />
           </li>
@@ -25,4 +26,10 @@ class Navigation extends Component {
   }
 }
 
-export default connect()(Navigation)
+const mapStateToProps = state => {
+  return {
+    name: state.users[state.authedUser].name,
+  }
+}
+
+export default connect(mapStateToProps)(Navigation)

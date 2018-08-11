@@ -18,7 +18,6 @@ class Login extends Component {
 
   handleLogin = () => {
     const { dispatch } = this.props
-    dispatch(login(this.state.currentUser))
     Promise.all([_getUsers(), _getQuestions()]).then(([users, questions]) => {
       dispatch(
         getUsers({
@@ -30,6 +29,7 @@ class Login extends Component {
           ...questions,
         }),
       )
+      dispatch(login(this.state.currentUser))
     })
   }
 
@@ -39,7 +39,8 @@ class Login extends Component {
         <select
           onChange={e => {
             this.changeUser(e.target.value)
-          }}>
+          }}
+        >
           <option>Select Login User</option>
           <option value="sarahedo">Sarah Edo</option>
           <option value="tylermcginnis">Tyler McGinnis</option>
