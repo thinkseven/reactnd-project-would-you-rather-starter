@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { _saveQuestion } from '../utils/_DATA'
+import { addQuestion } from '../actions/questions'
 import Navigation from './Navingation'
 
 class CreateQuestion extends Component {
   state = {
     optionOneText: '',
     optionTwoText: '',
-    author: 'tylermcginnis',
   }
 
   hanldeOption = event => {
@@ -20,7 +21,14 @@ class CreateQuestion extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    _saveQuestion(this.state)
+    const { author, dispatch } = this.props
+    _saveQuestion({ ...this.state, author: author }).then(question => {
+      dispatch(addQuestion(question))
+      this.setState({
+        optionOneText: '',
+        optionTwoText: '',
+      })
+    })
   }
 
   render() {
@@ -73,4 +81,10 @@ class CreateQuestion extends Component {
   }
 }
 
-export default CreateQuestion
+const mapStateToProps = state => {
+  return {
+    author: state.authedUser,
+  }
+}
+
+export default connect(mapStateToProps)(CreateQuestion)

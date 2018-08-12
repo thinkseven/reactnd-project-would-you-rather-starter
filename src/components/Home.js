@@ -36,12 +36,12 @@ class Home extends Component {
               }}
             >
               {unansweredQuestions.map(question => {
-                const { name, avatarUrl, questionId, options } = question
+                const { name, avatarUrl, id, options } = question
                 return (
                   <UnasweredQuestion
                     name={name}
                     avatarUrl={avatarUrl}
-                    questionId={questionId}
+                    id={id}
                     options={options}
                   />
                 )
@@ -68,12 +68,12 @@ class Home extends Component {
               }}
             >
               {answeredQuestions.map(question => {
-                const { name, avatarUrl, questionId, options } = question
+                const { name, avatarUrl, id, options } = question
                 return (
                   <AnsweredQuestion
                     name={name}
                     avatarUrl={avatarUrl}
-                    questionId={questionId}
+                    id={id}
                     options={options}
                   />
                 )

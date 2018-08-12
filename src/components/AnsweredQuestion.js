@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class AnsweredQuestion extends Component {
   render() {
-    const { name, avatarUrl, questionId, options } = this.props
+    const { name, avatarUrl, id, options } = this.props
     return (
       <div className="wrapper">
         <div className="top">
@@ -32,9 +33,7 @@ class AnsweredQuestion extends Component {
               )
             })}
             <div>
-              <button name="submit" type="submit">
-                View Poll
-              </button>
+              <Link to={`/question/poll/${id}`}>View Poll</Link>
             </div>
           </div>
         </div>

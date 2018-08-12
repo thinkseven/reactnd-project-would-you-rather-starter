@@ -9,7 +9,9 @@ class Navigation extends Component {
     return (
       <div className="menu">
         <ul>
-          <li>Home</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
           <li>
             <Link to="/question/create">New Question</Link>
           </li>

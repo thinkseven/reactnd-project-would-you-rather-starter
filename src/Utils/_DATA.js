@@ -113,6 +113,45 @@ let questions = {
       text: 'write Swift',
     },
   },
+  '655hovn1z7ulxj4khpfr2d': {
+    id: '655hovn1z7ulxj4khpfr2d',
+    timestamp: 1534096476882,
+    author: 'sarahedo',
+    optionOne: {
+      votes: [],
+      text: 'learn react',
+    },
+    optionTwo: {
+      votes: [],
+      text: 'learn angular',
+    },
+  },
+  qrjy475cg0fis6e6k1s7e: {
+    id: 'qrjy475cg0fis6e6k1s7e',
+    timestamp: 1534096538965,
+    author: 'tylermcginnis',
+    optionOne: {
+      votes: [],
+      text: 'be a manager',
+    },
+    optionTwo: {
+      votes: [],
+      text: 'be a team lead',
+    },
+  },
+  uwd7sri2yk24eehe6sfps: {
+    id: 'uwd7sri2yk24eehe6sfps',
+    timestamp: 1534096577689,
+    author: 'johndoe',
+    optionOne: {
+      votes: [],
+      text: 'go to restaurant to eat',
+    },
+    optionTwo: {
+      votes: [],
+      text: 'make food urself to eat',
+    },
+  },
 }
 
 function generateUID() {
