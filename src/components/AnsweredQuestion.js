@@ -15,7 +15,7 @@ class AnsweredQuestion extends Component {
         <div className="bottom">
           <div className="left">
             <div>
-              <img href="{avatarURL}" alt="{name}" />
+              <img href="{avatarUrl}" alt="{name}" />
             </div>
           </div>
           <div className="seperator" />

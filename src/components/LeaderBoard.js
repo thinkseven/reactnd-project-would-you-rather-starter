@@ -1,10 +1,41 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Score from './Score'
+import Navigation from './Navingation'
 
 class LeaderBoard extends Component {
   render() {
-    return this.props.users.map(user => <Score user={user} />)
+    return (
+      <div>
+        <Navigation />
+        <div>
+          {this.props.scores.map(score => (
+            <Score user={score} />
+          ))}
+        </div>
+      </div>
+    )
   }
 }
 
-export default LeaderBoard
+const mapStateToProps = ({ users }) => {
+  const scores = Object.keys(users).map(key => {
+    const { id, name, avatarUrl } = users[key]
+    const answeredQuestionsCount = Object.keys(users.johndoe.answers).length
+    const createdQuestionsCount = Object.keys(users.johndoe.questions).length
+    const score = answeredQuestionsCount + createdQuestionsCount
+    return {
+      id,
+      name,
+      avatarUrl,
+      answeredQuestionsCount,
+      createdQuestionsCount,
+      score,
+    }
+  })
+  return {
+    scores,
+  }
+}
+
+export default connect(mapStateToProps)(LeaderBoard)

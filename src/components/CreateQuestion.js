@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { _saveQuestion } from '../utils/_DATA'
+import Navigation from './Navingation'
 
 class CreateQuestion extends Component {
   state = {
@@ -25,6 +26,9 @@ class CreateQuestion extends Component {
   render() {
     return (
       <div>
+        <div>
+          <Navigation />
+        </div>
         <div>
           <h2>Create New Question</h2>
         </div>

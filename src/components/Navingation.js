@@ -14,7 +14,7 @@ class Navigation extends Component {
             <Link to="/question/create">New Question</Link>
           </li>
           <li>
-            <Link to="/question/create">New Question</Link>
+            <Link to="/leaderboard">Leader Board</Link>
           </li>
           <li>Hello, {`${name}`}</li>
           <li>
