@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import Navigation from './Navingation'
 import UnasweredQuestion from './UnansweredQuestion'
@@ -8,33 +8,12 @@ class Home extends Component {
   render() {
     const { answeredQuestions, unansweredQuestions } = this.props
     return (
-      <div>
+      <Fragment>
         <Navigation />
-        <div
-          style={{
-            padding: '8px',
-            margin: '7px',
-          }}
-        >
-          <div
-            style={{
-              border: '1px solid red',
-              width: '500px',
-              display: 'inline-block',
-            }}
-          >
-            <div
-              style={{
-                border: '10px solid red',
-              }}
-            >
-              Unaswered Questions
-            </div>
-            <div
-              style={{
-                border: '2px solid green',
-              }}
-            >
+        <div className="home">
+          <div className="home-left">
+            <div className="item">Unaswered Questions</div>
+            <div className="item">
               {unansweredQuestions.map(question => {
                 const { name, avatarUrl, id, options } = question
                 return (
@@ -48,25 +27,9 @@ class Home extends Component {
               })}
             </div>
           </div>
-          <div
-            style={{
-              border: '1px solid blue',
-              width: '500px',
-              display: 'inline-block',
-            }}
-          >
-            <div
-              style={{
-                border: '10px solid blue',
-              }}
-            >
-              Answered Questions
-            </div>
-            <div
-              style={{
-                border: '2px solid green',
-              }}
-            >
+          <div className="home-right">
+            <div className="item">Answered Questions</div>
+            <div className="item">
               {answeredQuestions.map(question => {
                 const { name, avatarUrl, id, options } = question
                 return (
@@ -81,7 +44,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     )
   }
 }

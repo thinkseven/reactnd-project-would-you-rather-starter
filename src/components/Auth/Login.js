@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import login from '../../actions/authentication'
 import getUsers from '../../actions/users'
 import getQuestions from '../../actions/questions'
 import { _getUsers, _getQuestions } from '../../utils/_DATA'
+import Header from '../Header'
 
 class Login extends Component {
   state = {
@@ -35,21 +36,33 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <select
-          onChange={e => {
-            this.changeUser(e.target.value)
-          }}
-        >
-          <option>Select Login User</option>
-          <option value="sarahedo">Sarah Edo</option>
-          <option value="tylermcginnis">Tyler McGinnis</option>
-          <option value="johndoe">John Doe</option>
-        </select>
-        <button type="button" onClick={this.handleLogin}>
-          Submit
-        </button>
-      </div>
+      <Fragment>
+        <Header />
+        <div className="login">
+          <div className="content">
+            <div className="item">
+              <label for="uname">
+                <b>Select a login user</b>
+              </label>
+              <select
+                name="uname"
+                onChange={e => {
+                  this.changeUser(e.target.value)
+                }}>
+                <option>-- Select Login User --</option>
+                <option value="sarahedo">Sarah Edo</option>
+                <option value="tylermcginnis">Tyler McGinnis</option>
+                <option value="johndoe">John Doe</option>
+              </select>
+            </div>
+            <div className="item">
+              <button type="button" onClick={this.handleLogin}>
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </Fragment>
     )
   }
 }

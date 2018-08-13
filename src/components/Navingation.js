@@ -1,29 +1,31 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Logout from './Auth/Logout'
+import Header from './Header'
 
 class Navigation extends Component {
   render() {
     const { name } = this.props
     return (
-      <div className="menu">
-        <ul>
-          <li>
+      <Fragment>
+        <Header />
+        <div className="navigation">
+          <div className="content-left">
             <Link to="/">Home</Link>
-          </li>
-          <li>
             <Link to="/question/create">New Question</Link>
-          </li>
-          <li>
             <Link to="/leaderboard">Leader Board</Link>
-          </li>
-          <li>Hello, {`${name}`}</li>
-          <li>
-            <Logout />
-          </li>
-        </ul>
-      </div>
+          </div>
+          <div className="content-right">
+            <div className="item">
+              <p>Hello, {`${name}`}</p>
+            </div>
+            <div className="item">
+              <Logout />
+            </div>
+          </div>
+        </div>
+      </Fragment>
     )
   }
 }
