@@ -6,7 +6,7 @@ import Header from './Header'
 
 class Navigation extends Component {
   render() {
-    const { name } = this.props
+    const { name, avatarURL } = this.props
     return (
       <Fragment>
         <Header />
@@ -21,6 +21,9 @@ class Navigation extends Component {
               <p>Hello, {`${name}`}</p>
             </div>
             <div className="item">
+              <img src={avatarURL} alt={name} />
+            </div>
+            <div className="item">
               <Logout />
             </div>
           </div>
@@ -33,6 +36,7 @@ class Navigation extends Component {
 const mapStateToProps = state => {
   return {
     name: state.users[state.authedUser].name,
+    avatarURL: state.users[state.authedUser].avatarURL,
   }
 }
 
