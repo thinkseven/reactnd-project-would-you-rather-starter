@@ -15,11 +15,11 @@ class Home extends Component {
             <div className="item">Unaswered Questions</div>
             <div className="item">
               {unansweredQuestions.map(question => {
-                const { name, avatarUrl, id, options } = question
+                const { name, avatarURL, id, options } = question
                 return (
                   <UnasweredQuestion
                     name={name}
-                    avatarUrl={avatarUrl}
+                    avatarURL={avatarURL}
                     id={id}
                     options={options}
                   />
@@ -31,11 +31,11 @@ class Home extends Component {
             <div className="item">Answered Questions</div>
             <div className="item">
               {answeredQuestions.map(question => {
-                const { name, avatarUrl, id, options } = question
+                const { name, avatarURL, id, options } = question
                 return (
                   <AnsweredQuestion
                     name={name}
-                    avatarUrl={avatarUrl}
+                    avatarURL={avatarURL}
                     id={id}
                     options={options}
                   />
@@ -50,24 +50,24 @@ class Home extends Component {
 }
 
 const formatQuestion = (users, questions, filteredQuestions) => {
-  const formatOption = (option, id) => ({
-    id: id,
+  const formatOption = (option, questionId) => ({
+    questionId: questionId,
     text: option.text,
   })
 
-  const getOptions = (question, id) => {
+  const getOptions = (question, questionId) => {
     const options = []
-    options.push(formatOption(question.optionOne, id))
-    options.push(formatOption(question.optionTwo, id))
+    options.push(formatOption(question.optionOne, questionId))
+    options.push(formatOption(question.optionTwo, questionId))
     return options
   }
 
   return filteredQuestions.map(key => {
     const { author, id } = questions[key]
-    const { avatarUrl, name } = users[author]
+    const { avatarURL, name } = users[author]
     return {
       name,
-      avatarUrl,
+      avatarURL,
       id,
       options: getOptions(questions[key], id),
     }

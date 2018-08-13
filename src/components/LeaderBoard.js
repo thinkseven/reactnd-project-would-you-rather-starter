@@ -20,14 +20,14 @@ class LeaderBoard extends Component {
 
 const mapStateToProps = ({ users }) => {
   const scores = Object.keys(users).map(key => {
-    const { id, name, avatarUrl } = users[key]
+    const { id, name, avatarURL } = users[key]
     const answeredQuestionsCount = Object.keys(users.johndoe.answers).length
     const createdQuestionsCount = Object.keys(users.johndoe.questions).length
     const score = answeredQuestionsCount + createdQuestionsCount
     return {
       id,
       name,
-      avatarUrl,
+      avatarURL,
       answeredQuestionsCount,
       createdQuestionsCount,
       score,

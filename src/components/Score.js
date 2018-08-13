@@ -4,16 +4,15 @@ class Score extends Component {
   render() {
     const {
       answeredQuestionsCount,
-      avatarUrl,
+      avatarURL,
       createdQuestionsCount,
-      id,
       name,
       score,
     } = this.props.user
     return (
       <div className="wrapper">
         <div>
-          <img href="{avatarURL}" alt="{name}" />
+          <img src={avatarURL} alt={name} />
         </div>
         <div>
           <div>{name}</div>

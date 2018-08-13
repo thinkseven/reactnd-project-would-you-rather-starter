@@ -3,29 +3,29 @@ import { Link } from 'react-router-dom'
 
 class AnsweredQuestion extends Component {
   render() {
-    const { name, avatarUrl, id, options } = this.props
+    const { name, avatarURL, id, options } = this.props
     return (
-      <div className="wrapper">
-        <div className="top">
-          <div className="main">
+      <div>
+        <div>
+          <div>
             <div>
               <h3>{`${name} asks:`}</h3>
             </div>
           </div>
         </div>
-        <div className="bottom">
-          <div className="left">
+        <div>
+          <div>
             <div>
-              <img href="{avatarUrl}" alt="{name}" />
+              <img src={avatarURL} alt={name} />
             </div>
           </div>
-          <div className="seperator" />
-          <div className="right">
+          <div />
+          <div>
             <div>
               <h3>Would You Rather ...</h3>
             </div>
             {options.map(option => {
-              const { id, text } = option
+              const { text } = option
               return (
                 <div>
                   <label for="{text}">{text}</label>
@@ -33,7 +33,7 @@ class AnsweredQuestion extends Component {
               )
             })}
             <div>
-              <Link to={`/question/poll/${id}`}>View Poll</Link>
+              <Link to={`//question//poll/${id}`}>View Poll</Link>
             </div>
           </div>
         </div>

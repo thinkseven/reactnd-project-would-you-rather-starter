@@ -4,7 +4,7 @@ import Navigation from './Navingation'
 
 class Poll extends Component {
   render() {
-    const { name, avatarUrl, options } = this.props
+    const { name, avatarURL, options } = this.props
     return (
       <div>
         <div>
@@ -21,7 +21,7 @@ class Poll extends Component {
           <div className="bottom">
             <div className="left">
               <div>
-                <img href="{avatarURL}" alt="{name}" />
+                <img src={avatarURL} alt={name} />
               </div>
             </div>
             <div className="seperator" />
@@ -36,8 +36,7 @@ class Poll extends Component {
                     <div
                       style={{
                         display: yourVote ? 'block' : 'none',
-                      }}
-                    >
+                      }}>
                       Your vote
                     </div>
                     <div>{text}</div>
@@ -74,7 +73,7 @@ const mapStateToProps = ({ authedUser, users, questions }, { match }) => {
 
   return {
     name: users[questions[id].author].name,
-    avatarUrl: users[questions[id].author].avatarUrl,
+    avatarURL: users[questions[id].author].avatarURL,
     options: getOptions(questions[id]),
   }
 }

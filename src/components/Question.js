@@ -4,7 +4,7 @@ import Navigation from './Navingation'
 
 class Question extends Component {
   render() {
-    const { name, avatarUrl, questionId, options } = this.props
+    const { name, avatarURL, questionId, options } = this.props
     return (
       <div>
         <div>
@@ -21,7 +21,7 @@ class Question extends Component {
           <div className="bottom">
             <div className="left">
               <div>
-                <img href="{avatarURL}" alt="{name}" />
+                <img src={avatarURL} alt={name} />
               </div>
             </div>
             <div className="seperator" />
@@ -30,11 +30,11 @@ class Question extends Component {
                 <h3>Would You Rather ...</h3>
               </div>
               {options.map(option => {
-                const { id, text } = option
+                const { text } = option
                 return (
                   <div>
-                    <input type="radio" id="{id}" name="{id}" checked />
-                    <label for="{text}">{text}</label>
+                    <input type="radio" name={questionId} checked />
+                    <label for={text}>{text}</label>
                   </div>
                 )
               })}
@@ -54,21 +54,21 @@ class Question extends Component {
 const mapStateToProps = ({ users, questions }, { match }) => {
   const id = match.params.id
 
-  const formatOption = (option, id) => ({
-    id: id,
+  const formatOption = (option, questionId) => ({
+    questionId: questionId,
     text: option.text,
   })
 
-  const getOptions = (question, id) => {
+  const getOptions = (question, questionId) => {
     const options = []
-    options.push(formatOption(question.optionOne, id))
-    options.push(formatOption(question.optionTwo, id))
+    options.push(formatOption(question.optionOne, questionId))
+    options.push(formatOption(question.optionTwo, questionId))
     return options
   }
 
   return {
     name: users[questions[id].author].name,
-    avatarUrl: users[questions[id].author].avatarUrl,
+    avatarURL: users[questions[id].author].avatarURL,
     questionId: id,
     options: getOptions(questions[id], id),
   }
