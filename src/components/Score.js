@@ -10,16 +10,22 @@ class Score extends Component {
       score,
     } = this.props.user
     return (
-      <div className="wrapper">
-        <div>
+      <div className="score">
+        <div className="avatar">
           <img src={avatarURL} alt={name} />
         </div>
-        <div>
-          <div>{name}</div>
-          <div>{`Answered questions: ${answeredQuestionsCount}`}</div>
-          <div>{`Created questions: ${createdQuestionsCount}`}</div>
+        <div className="summary">
+          <div>
+            <h2>{name}</h2>
+          </div>
+          <div>
+            <p>{`Answered questions: ${answeredQuestionsCount}`}</p>
+          </div>
+          <div>
+            <p>{`Created questions: ${createdQuestionsCount}`}</p>
+          </div>
         </div>
-        <div>
+        <div className="scoreItem">
           <div>
             <h2>Score</h2>
           </div>

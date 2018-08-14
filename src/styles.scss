@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+img {
+  border-radius: 100%;
+}
+
 .header {
   flex-basis: 100%;
   width: 100%;
@@ -123,10 +127,6 @@
   }
 }
 
-img {
-  border-radius: 100%;
-}
-
 .question {
   display: flex;
   flex-direction: column;
@@ -160,5 +160,67 @@ img {
         margin: 10px;
       }
     }
+  }
+}
+
+.newQuestion {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+
+  /* Style inputs with type="text", select elements and textareas */
+  input[type='text'] {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  /* Style the submit button with a specific background color etc */
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* When moving the mouse over the submit button, add a darker green color */
+  button:hover {
+    background-color: #45a049;
+  }
+}
+
+.score {
+  display: flex;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  margin: 5px;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 200px;
+  width: 500px;
+  margin: auto;
+
+  .avatar {
+    flex-basis: 20%;
+    padding-left: 10px;
+  }
+
+  .summary {
+    flex-basis: 60%;
+  }
+
+  .scoreItem {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 }
