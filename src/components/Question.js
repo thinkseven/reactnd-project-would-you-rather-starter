@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import Navigation from './Navingation'
 
@@ -6,25 +6,18 @@ class Question extends Component {
   render() {
     const { name, avatarURL, questionId, options } = this.props
     return (
-      <div>
-        <div>
-          <Navigation />
-        </div>
-        <div className="wrapper">
-          <div className="top">
-            <div className="main">
-              <div>
-                <h3>{`${name} asks:`}</h3>
-              </div>
-            </div>
+      <Fragment>
+        <Navigation />
+        <div className="unansweredQuestion">
+          <div>
+            <h3>{`${name} asks:`}</h3>
           </div>
-          <div className="bottom">
+          <div className="unansweredQuestion-content">
             <div className="left">
               <div>
                 <img src={avatarURL} alt={name} />
               </div>
             </div>
-            <div className="seperator" />
             <div className="right">
               <div>
                 <h3>Would You Rather ...</h3>
@@ -46,7 +39,7 @@ class Question extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     )
   }
 }

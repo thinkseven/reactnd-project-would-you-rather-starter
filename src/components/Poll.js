@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import Navigation from './Navingation'
 
@@ -6,28 +6,34 @@ class Poll extends Component {
   render() {
     const { name, avatarURL, options } = this.props
     return (
-      <div>
-        <div>
-          <Navigation />
-        </div>
-        <div className="wrapper">
-          <div className="top">
-            <div className="main">
-              <div>
-                <h3>{`Asked by ${name}`}</h3>
-              </div>
-            </div>
+      <Fragment>
+        <Navigation />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '500px',
+            margin: 'auto',
+            'box-shadow': '0 10px 15px 0 rgba(0, 0, 0, 0.2)',
+            transition: '0.3s',
+          }}
+        >
+          <div>
+            <h3>{`Asked by ${name}`}</h3>
           </div>
-          <div className="bottom">
-            <div className="left">
-              <div>
-                <img src={avatarURL} alt={name} />
-              </div>
+          <div
+            style={{
+              display: 'flex',
+              'justify-content': 'space-evenly',
+              'align-items': 'center',
+            }}
+          >
+            <div>
+              <img src={avatarURL} alt={name} />
             </div>
-            <div className="seperator" />
-            <div className="right">
+            <div>
               <div>
-                <h3>Results</h3>
+                <h2>Results</h2>
               </div>
               {options.map(option => {
                 const { yourVote, text, votes, totalVotes } = option
@@ -36,18 +42,23 @@ class Poll extends Component {
                     <div
                       style={{
                         display: yourVote ? 'block' : 'none',
-                      }}>
+                      }}
+                    >
                       Your vote
                     </div>
-                    <div>{text}</div>
-                    <div>{`${votes} out of ${totalVotes}`}</div>
+                    <div>
+                      <p>{text}</p>
+                    </div>
+                    <div>
+                      <p>{`${votes} out of ${totalVotes}`}</p>
+                    </div>
                   </div>
                 )
               })}
             </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     )
   }
 }
