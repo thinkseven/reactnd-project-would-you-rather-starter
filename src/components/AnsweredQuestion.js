@@ -5,22 +5,16 @@ class AnsweredQuestion extends Component {
   render() {
     const { name, avatarURL, id, options } = this.props
     return (
-      <div>
-        <div>
-          <div>
-            <div>
-              <h3>{`${name} asks:`}</h3>
-            </div>
-          </div>
+      <div className="question">
+        <div className="question-header">
+          <h3>{`${name} asks:`}</h3>
         </div>
-        <div>
-          <div>
-            <div>
-              <img src={avatarURL} alt={name} />
-            </div>
+        <div className="question-content">
+          <div className="question-content-left">
+            <img src={avatarURL} alt={name} />
           </div>
-          <div />
-          <div>
+          <div className="question-content-seperator" />
+          <div className="question-content-right">
             <div>
               <h3>Would You Rather ...</h3>
             </div>
@@ -33,7 +27,7 @@ class AnsweredQuestion extends Component {
               )
             })}
             <div>
-              <Link to={`//question//poll/${id}`}>View Poll</Link>
+              <Link to={`/question/poll/${id}`}>View Poll</Link>
             </div>
           </div>
         </div>
