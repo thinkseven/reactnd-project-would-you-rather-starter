@@ -1,4 +1,8 @@
-import { GET_QUESTIONS, ADD_QUESTION } from '../actions/questions'
+import {
+  GET_QUESTIONS,
+  ADD_QUESTION,
+  ADD_QUESTION_POLL,
+} from '../actions/questions'
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -11,6 +15,21 @@ export default function questions(state = {}, action) {
       return {
         ...state,
         [action.question.id]: action.question,
+      }
+    case ADD_QUESTION_POLL:
+      return {
+        ...state,
+        [action.poll.questionId]: {
+          ...state[action.poll.questionId],
+          [action.poll.selectedOption]: {
+            ...state[action.poll.questionId][action.poll.selectedOption],
+            votes: [
+              ...state[action.poll.questionId][action.poll.selectedOption]
+                .votes,
+              action.poll.authedUser,
+            ],
+          },
+        },
       }
     default:
       return state

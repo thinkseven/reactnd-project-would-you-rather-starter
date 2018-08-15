@@ -1,4 +1,4 @@
-import { GET_USERS, ADD_QUESTION } from '../actions/users'
+import { GET_USERS, ADD_QUESTION, ADD_USER_POLL } from '../actions/users'
 
 export default function users(state = {}, action) {
   switch (action.type) {
@@ -18,7 +18,17 @@ export default function users(state = {}, action) {
           ],
         },
       }
-
+    case ADD_USER_POLL:
+      return {
+        ...state,
+        [action.poll.authedUser]: {
+          ...state[action.poll.authedUser],
+          answers: {
+            ...state[action.poll.authedUser].answers,
+            [action.poll.questionId]: action.poll.selectedOption,
+          },
+        },
+      }
     default:
       return state
   }

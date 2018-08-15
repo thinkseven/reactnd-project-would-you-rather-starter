@@ -1,8 +1,40 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import Navigation from './Navingation'
+import { addUserPoll } from '../actions/users'
+import { addQuestionPoll } from '../actions/questions'
 
 class Question extends Component {
+  state = {
+    selectedOption: 'optionOne',
+  }
+
+  handleOptionSelection = event => {
+    this.setState({
+      selectedOption: event.target.value,
+    })
+  }
+
+  handlerSubmitPoll = event => {
+    event.preventDefault()
+    const { dispatch, authedUser, questionId } = this.props
+    const { selectedOption } = this.state
+    dispatch(
+      addUserPoll({
+        authedUser,
+        questionId,
+        selectedOption,
+      }),
+    )
+    dispatch(
+      addQuestionPoll({
+        authedUser,
+        questionId,
+        selectedOption,
+      }),
+    )
+  }
+
   render() {
     const { name, avatarURL, questionId, options } = this.props
     return (
@@ -23,16 +55,26 @@ class Question extends Component {
                 <h3>Would You Rather ...</h3>
               </div>
               {options.map(option => {
-                const { text } = option
+                const { optionId, text } = option
                 return (
-                  <div>
-                    <input type="radio" name={questionId} checked />
+                  <div key={optionId}>
+                    <input
+                      type="radio"
+                      name={questionId}
+                      id={optionId}
+                      value={optionId}
+                      checked={this.state.selectedOption === optionId}
+                      onChange={this.handleOptionSelection}
+                    />
                     <label for={text}>{text}</label>
                   </div>
                 )
               })}
               <div>
-                <button name="submit" type="submit">
+                <button
+                  name="submit"
+                  type="submit"
+                  onClick={this.handlerSubmitPoll}>
                   Submit
                 </button>
               </div>
@@ -44,24 +86,25 @@ class Question extends Component {
   }
 }
 
-const mapStateToProps = ({ users, questions }, { match }) => {
+const mapStateToProps = ({ authedUser, users, questions }, { match }) => {
   const id = match.params.id
 
-  const formatOption = (option, questionId) => ({
-    questionId: questionId,
-    text: option.text,
+  const formatOption = (optionId, { text }) => ({
+    optionId,
+    text,
   })
 
   const getOptions = (question, questionId) => {
     const options = []
-    options.push(formatOption(question.optionOne, questionId))
-    options.push(formatOption(question.optionTwo, questionId))
+    options.push(formatOption('optionOne', question.optionOne))
+    options.push(formatOption('optionTwo', question.optionTwo))
     return options
   }
 
   return {
     name: users[questions[id].author].name,
     avatarURL: users[questions[id].author].avatarURL,
+    authedUser,
     questionId: id,
     options: getOptions(questions[id], id),
   }
