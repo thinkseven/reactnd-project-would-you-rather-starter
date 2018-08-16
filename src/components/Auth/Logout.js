@@ -9,11 +9,7 @@ class Logout extends Component {
   }
 
   render() {
-    return (
-      <button type="button" onClick={this.handleLogout}>
-        Logout
-      </button>
-    )
+    return <a onClick={this.handleLogout}>Logout</a>
   }
 }
 

@@ -21,15 +21,29 @@ class Navigation extends Component {
     return (
       <Fragment>
         <div className="topnav" id="myTopnav">
-          <Link to="/">Home</Link>
-          <Link to="/question/create">New Question</Link>
-          <Link to="/leaderboard">Leader Board</Link>
-          <span>Hello, {`${name}`}</span>
-          <img className="avatar" src={avatarURL} alt={name} />
-          <Logout />
-          <a className="icon" onClick={this.handleTab}>
-            <i className="fa fa-bars" />
-          </a>
+          <div>
+            <Link to="/">Home</Link>
+          </div>
+          <div>
+            <Link to="/question/create">New Question</Link>
+          </div>
+          <div>
+            <Link to="/leaderboard">Leader Board</Link>
+          </div>
+          <div>
+            <span>Hello, {`${name}`}</span>
+          </div>
+          <div>
+            <img className="avatar" src={avatarURL} alt={name} />
+          </div>
+          <div>
+            <Logout />
+          </div>
+          <div>
+            <a className="icon" onClick={this.handleTab}>
+              <i className="fa fa-bars" />
+            </a>
+          </div>
         </div>
       </Fragment>
     )
