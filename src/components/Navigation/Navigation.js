@@ -20,26 +20,16 @@ class Navigation extends Component {
     const { name, avatarURL } = this.props
     return (
       <Fragment>
-        <div className="navigation">
-          <div className="topnav" id="myTopnav">
-            <Link to="/">Home</Link>
-            <Link to="/question/create">New Question</Link>
-            <Link to="/leaderboard">Leader Board</Link>
-            <a className="icon" onClick={this.handleTab}>
-              <i className="fa fa-bars" />
-            </a>
-          </div>
-          <div className="content-right">
-            <div className="item">
-              <p>Hello, {`${name}`}</p>
-            </div>
-            <div className="item">
-              <img src={avatarURL} alt={name} />
-            </div>
-            <div className="item">
-              <Logout />
-            </div>
-          </div>
+        <div className="topnav" id="myTopnav">
+          <Link to="/">Home</Link>
+          <Link to="/question/create">New Question</Link>
+          <Link to="/leaderboard">Leader Board</Link>
+          <span>Hello, {`${name}`}</span>
+          <img className="avatar" src={avatarURL} alt={name} />
+          <Logout />
+          <a className="icon" onClick={this.handleTab}>
+            <i className="fa fa-bars" />
+          </a>
         </div>
       </Fragment>
     )
