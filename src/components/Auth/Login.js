@@ -4,7 +4,8 @@ import login from '../../actions/authentication'
 import getUsers from '../../actions/users'
 import getQuestions from '../../actions/questions'
 import { _getUsers, _getQuestions } from '../../utils/_DATA'
-import Header from '../Header'
+import Header from '../Header/Header'
+import './Login.css'
 
 class Login extends Component {
   state = {
@@ -48,7 +49,8 @@ class Login extends Component {
                 name="uname"
                 onChange={e => {
                   this.changeUser(e.target.value)
-                }}>
+                }}
+              >
                 <option>-- Select Login User --</option>
                 <option value="sarahedo">Sarah Edo</option>
                 <option value="tylermcginnis">Tyler McGinnis</option>

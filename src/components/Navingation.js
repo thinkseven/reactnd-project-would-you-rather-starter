@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Logout from './Auth/Logout'
-import Header from './Header'
+import Header from './Header/Header'
 
 class Navigation extends Component {
   render() {
