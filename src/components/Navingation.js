@@ -9,7 +9,6 @@ class Navigation extends Component {
     const { name, avatarURL } = this.props
     return (
       <Fragment>
-        <Header />
         <div className="navigation">
           <div className="content-left">
             <Link to="/">Home</Link>
