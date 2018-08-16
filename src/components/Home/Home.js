@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import Navigation from './Navingation'
+import Navigation from '../Navigation/Navigation'
 import UnasweredQuestion from './UnansweredQuestion'
 import AnsweredQuestion from './AnsweredQuestion'
+import './Home.css'
 
 class Home extends Component {
   render() {

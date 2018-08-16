@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { _saveQuestion } from '../utils/_DATA'
-import { addQuestion } from '../actions/questions'
-import Navigation from './Navingation'
+import { _saveQuestion } from '../../utils/_DATA'
+import { addQuestion } from '../../actions/questions'
+import Navigation from '../Navigation/Navigation'
+import './CreateQuestion.css'
 
 class CreateQuestion extends Component {
   state = {

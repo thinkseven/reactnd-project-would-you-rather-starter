@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Home from './Home'
+import Home from './Home/Home'
 import Login from './Auth/Login'
-import LeaderBoard from './LeaderBoard'
-import CreateQuestion from './CreateQuestion'
-import Poll from '../components/Poll'
-import Question from '../components/Question'
+import LeaderBoard from './LeaderBoard/LeaderBoard'
+import CreateQuestion from './CreateQuestion/CreateQuestion'
+import Poll from './Poll/Poll'
+import Question from './Question/Question'
 
 class App extends Component {
   render() {

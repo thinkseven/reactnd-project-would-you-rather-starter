@@ -5,7 +5,7 @@ import getUsers from '../../actions/users'
 import getQuestions from '../../actions/questions'
 import { _getUsers, _getQuestions } from '../../utils/_DATA'
 import Header from '../Header/Header'
-import './Login.css'
+import './Auth.css'
 
 class Login extends Component {
   state = {

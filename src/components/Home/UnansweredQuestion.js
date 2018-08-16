@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import './Question.css'
 
-class AnsweredQuestion extends Component {
+class UnasweredQuestion extends Component {
   render() {
     const { name, avatarURL, id, options } = this.props
     return (
@@ -13,7 +14,6 @@ class AnsweredQuestion extends Component {
           <div className="question-content-left">
             <img src={avatarURL} alt={name} />
           </div>
-          <div className="question-content-seperator" />
           <div className="question-content-right">
             <div>
               <h3>Would You Rather ...</h3>
@@ -27,7 +27,7 @@ class AnsweredQuestion extends Component {
               )
             })}
             <div>
-              <Link to={`/question/poll/${id}`}>View Poll</Link>
+              <Link to={`/question/${id}`}>View Poll</Link>
             </div>
           </div>
         </div>
@@ -36,4 +36,4 @@ class AnsweredQuestion extends Component {
   }
 }
 
-export default AnsweredQuestion
+export default UnasweredQuestion

@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import Navigation from './Navingation'
-import { addUserPoll } from '../actions/users'
-import { addQuestionPoll } from '../actions/questions'
+import Navigation from '../Navigation/Navigation'
+import { addUserPoll } from '../../actions/users'
+import { addQuestionPoll } from '../../actions/questions'
+import './Question.css'
 
 class Question extends Component {
   state = {
@@ -74,7 +75,8 @@ class Question extends Component {
                 <button
                   name="submit"
                   type="submit"
-                  onClick={this.handlerSubmitPoll}>
+                  onClick={this.handlerSubmitPoll}
+                >
                   Submit
                 </button>
               </div>

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import Navigation from './Navingation'
+import Navigation from '../Navigation/Navigation'
+import './Poll.css'
 
 class Poll extends Component {
   render() {
