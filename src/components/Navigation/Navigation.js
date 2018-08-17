@@ -7,17 +7,17 @@ class Navigation extends PureComponent {
   myRef = React.createRef()
   handleTab = () => {
     const x = this.myRef.current
-    if (x.className === 'topnav col-es-12 col-s-9') {
-      x.className += ' col-es-12 col-s-9 responsive'
+    if (x.className === 'topnav') {
+      x.className += ' responsive'
     } else {
-      x.className = 'topnav col-es-12 col-s-9'
+      x.className = 'topnav'
     }
   }
 
   render() {
     return (
       <div>
-        <div className="topnav col-es-12 col-s-9" ref={this.myRef}>
+        <div className="topnav" ref={this.myRef}>
           <Link to="/">Home</Link>
           <Link to="/question/create">New Question</Link>
           <Link to="/leaderboard">Leader Board</Link>

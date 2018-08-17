@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { logout } from '../../actions/authentication'
 import './Auth.css'
 
-class Logout extends Component {
+class Logout extends PureComponent {
   handleLogout = event => {
     this.props.dispatch(logout())
   }
@@ -11,15 +11,18 @@ class Logout extends Component {
   render() {
     const { name, avatarURL } = this.props
     return (
-      <div>
+      <div className="logout">
         <div>
           <img className="avatar" src={avatarURL} alt={name} />
         </div>
-        <div className="hello">
+        <div className="username">
           <span>Hello, {`${name}`}</span>
         </div>
-        <div>
-          <a onClick={this.handleLogout}>Logout</a>
+        <div className="logoutBtn">
+          <button onClick={this.handleLogout}>
+            <i class="fas fa-sign-out-alt" />
+            Logout
+          </button>
         </div>
       </div>
     )
