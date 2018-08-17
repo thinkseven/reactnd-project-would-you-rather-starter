@@ -1,5 +1,10 @@
-import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React, { PureComponent, Fragment } from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
 import { connect } from 'react-redux'
 import Home from './Home/Home'
 import Login from './Auth/Login'
@@ -8,7 +13,7 @@ import CreateQuestion from './CreateQuestion/CreateQuestion'
 import Poll from './Poll/Poll'
 import Question from './Question/Question'
 
-class App extends Component {
+class App extends PureComponent {
   render() {
     const { loggedin } = this.props
     return (
@@ -21,11 +26,12 @@ class App extends Component {
               <Route exact path="/question/:id" component={Question} />
               <Route exact path="/question/poll/:id" component={Poll} />
               <Route exact path="/leaderboard" component={LeaderBoard} />
-              <Route render={() => <h2>404 page not found</h2>} />{' '}
+              <Route render={() => <h2>404 page not found</h2>} />
             </Switch>
           ) : (
             <Switch>
-              <Route path="/" component={Login} />
+              <Route exact path="/" component={Login} />
+              <Redirect to="/" />
             </Switch>
           )}
         </Fragment>

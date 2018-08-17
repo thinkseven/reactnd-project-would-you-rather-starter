@@ -5,8 +5,8 @@ import './Header.css'
 class Header extends Component {
   render() {
     return (
-      <div className="header">
-        <img className="logo" src={logo} alt="Would You Rather?" />
+      <div className="logo">
+        <img src={logo} alt="Would You Rather?" />
       </div>
     )
   }
