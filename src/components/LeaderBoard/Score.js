@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
-import './Score.css'
+import React, { PureComponent } from 'react'
 
-class Score extends Component {
+class Score extends PureComponent {
   render() {
     const {
       answeredQuestionsCount,

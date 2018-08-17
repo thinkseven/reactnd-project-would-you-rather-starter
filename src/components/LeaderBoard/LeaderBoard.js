@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import './LeaderBoard.css'
 import Score from './Score'
 import Navigation from '../Navigation/Navigation'
 
@@ -8,9 +9,12 @@ class LeaderBoard extends Component {
     return (
       <Fragment>
         <Navigation />
-        {this.props.scores.map(score => (
-          <Score user={score} />
-        ))}
+        <div className="leaderBoard">
+          <div className="header">Leader Board</div>
+          {this.props.scores.map(score => (
+            <Score user={score} />
+          ))}
+        </div>
       </Fragment>
     )
   }
