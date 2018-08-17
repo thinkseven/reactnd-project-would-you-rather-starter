@@ -11,7 +11,7 @@ class Home extends Component {
     return (
       <Fragment>
         <Navigation />
-        <div className="home">
+        {/*         <div className="home">
           <div className="home-left">
             <div className="item">Unaswered Questions</div>
             <div className="item">
@@ -44,7 +44,7 @@ class Home extends Component {
               })}
             </div>
           </div>
-        </div>
+        </div> */}
       </Fragment>
     )
   }

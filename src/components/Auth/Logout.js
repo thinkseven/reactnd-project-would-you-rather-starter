@@ -9,8 +9,28 @@ class Logout extends Component {
   }
 
   render() {
-    return <a onClick={this.handleLogout}>Logout</a>
+    const { name, avatarURL } = this.props
+    return (
+      <div>
+        <div>
+          <img className="avatar" src={avatarURL} alt={name} />
+        </div>
+        <div className="hello">
+          <span>Hello, {`${name}`}</span>
+        </div>
+        <div>
+          <a onClick={this.handleLogout}>Logout</a>
+        </div>
+      </div>
+    )
   }
 }
 
-export default connect()(Logout)
+const mapStateToProps = state => {
+  return {
+    name: state.users[state.authedUser].name,
+    avatarURL: state.users[state.authedUser].avatarURL,
+  }
+}
+
+export default connect(mapStateToProps)(Logout)
