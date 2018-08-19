@@ -13,37 +13,38 @@ class Poll extends Component {
           <div className="header">
             <span>{`Asked by ${name}`}</span>
           </div>
-          <div
-            style={{
-              display: 'flex',
-              'justify-content': 'space-evenly',
-              'align-items': 'center',
-            }}
-          >
+          <div className="content">
             <div className="avatar">
               <img src={avatarURL} alt={name} />
             </div>
-            <div>
+            <div className="result">
               <div>
-                <h2>Results</h2>
+                <h3>Results</h3>
               </div>
               {options.map(option => {
                 const { yourVote, text, votes, totalVotes } = option
+                const percentage = Math.round((votes / totalVotes) * 100)
                 return (
                   <div>
+                    <div>
+                      <p>
+                        {text}
+                        {yourVote && <span className="badge">Your vote</span>}
+                      </p>
+                    </div>
+                    <div class="w3-light-grey">
+                      <div
+                        class="w3-container w3-green w3-center"
+                        style={{ width: `${percentage}%` }}
+                      >
+                        {`${percentage}%`}
+                      </div>
+                    </div>
                     <div
                       style={{
-                        display: yourVote ? 'block' : 'none',
+                        textAlign: 'center',
                       }}
-                    >
-                      Your vote
-                    </div>
-                    <div>
-                      <p>{text}</p>
-                    </div>
-                    <div>
-                      <p>{`${votes} out of ${totalVotes}`}</p>
-                    </div>
+                    >{`${votes} out of ${totalVotes}`}</div>
                   </div>
                 )
               })}
