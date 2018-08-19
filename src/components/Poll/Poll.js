@@ -9,18 +9,9 @@ class Poll extends Component {
     return (
       <Fragment>
         <Navigation />
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '500px',
-            margin: 'auto',
-            'box-shadow': '0 10px 15px 0 rgba(0, 0, 0, 0.2)',
-            transition: '0.3s',
-          }}
-        >
-          <div>
-            <h3>{`Asked by ${name}`}</h3>
+        <div className="poll">
+          <div className="header">
+            <span>{`Asked by ${name}`}</span>
           </div>
           <div
             style={{
@@ -29,7 +20,7 @@ class Poll extends Component {
               'align-items': 'center',
             }}
           >
-            <div>
+            <div className="avatar">
               <img src={avatarURL} alt={name} />
             </div>
             <div>

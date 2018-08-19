@@ -11,7 +11,7 @@ class Question extends PureComponent {
           <h3>{`${name} asks:`}</h3>
         </div>
         <div className="question-content">
-          <div className="question-content-left">
+          <div className="question-content-left avatar">
             <img src={avatarURL} alt={name} />
           </div>
           <div className="question-content-right">

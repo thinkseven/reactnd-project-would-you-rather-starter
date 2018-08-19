@@ -16,16 +16,21 @@
     .question-content-left {
       margin: 5px;
     }
-    .question-content-seperator {
-      box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.2);
-      height: 100px;
-      margin: 5px;
+    .avatar > img {
+      vertical-align: middle;
+      width: 50px;
+      height: 47px;
+      border-radius: 50%;
     }
     .question-content-right {
-      margin: 5px;
+      margin: 2px;
       width: 400px;
       div {
         margin: 10px;
+      }
+      div:nth-child(4) {
+        margin: 0;
+        margin-bottom: 10px;
       }
       a {
         margin: 10px;
