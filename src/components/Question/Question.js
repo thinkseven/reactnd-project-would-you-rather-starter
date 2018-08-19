@@ -42,19 +42,13 @@ class Question extends Component {
       <Fragment>
         <Navigation />
         <div className="unansweredQuestion">
-          <div>
-            <h3>{`${name} asks:`}</h3>
-          </div>
-          <div className="unansweredQuestion-content">
-            <div className="left">
-              <div>
-                <img src={avatarURL} alt={name} />
-              </div>
+          <div className="header">{`${name} asks:`}</div>
+          <div className="content">
+            <div className="avatar">
+              <img src={avatarURL} alt={name} />
             </div>
             <div className="right">
-              <div>
-                <h3>Would You Rather ...</h3>
-              </div>
+              <div>Would You Rather ...</div>
               {options.map(option => {
                 const { optionId, text } = option
                 return (
@@ -73,6 +67,7 @@ class Question extends Component {
               })}
               <div>
                 <button
+                  className="w3-button w3-black"
                   name="submit"
                   type="submit"
                   onClick={this.handlerSubmitPoll}
