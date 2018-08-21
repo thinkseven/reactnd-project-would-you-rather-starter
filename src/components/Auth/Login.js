@@ -42,15 +42,14 @@ class Login extends Component {
         <div className="login">
           <div className="content">
             <div className="item">
-              <label for="uname">
+              <label htmlFor="uname">
                 <b>Select a login user</b>
               </label>
               <select
                 name="uname"
                 onChange={e => {
                   this.changeUser(e.target.value)
-                }}
-              >
+                }}>
                 <option>-- Select Login User --</option>
                 <option value="sarahedo">Sarah Edo</option>
                 <option value="tylermcginnis">Tyler McGinnis</option>

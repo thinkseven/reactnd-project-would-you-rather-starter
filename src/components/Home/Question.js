@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import './Question.css'
 
@@ -21,8 +22,8 @@ class Question extends PureComponent {
             {options.map(option => {
               const { text } = option
               return (
-                <div>
-                  <label for="{text}">{text}</label>
+                <div key={text}>
+                  <label htmlFor="{text}">{text}</label>
                 </div>
               )
             })}
@@ -38,6 +39,20 @@ class Question extends PureComponent {
       </div>
     )
   }
+}
+
+Question.propTypes = {
+  name: PropTypes.string,
+  avatarURL: PropTypes.string,
+  id: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      questionId: PropTypes.string,
+      text: PropTypes.string,
+    }),
+  ),
+  answeredflag: PropTypes.bool,
+  timestamp: PropTypes.number,
 }
 
 export default Question

@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import logo from '../../images/wouldyourather-1.png'
 import './Header.css'
 
-class Header extends Component {
+class Header extends PureComponent {
   render() {
     return (
       <div className="logo">

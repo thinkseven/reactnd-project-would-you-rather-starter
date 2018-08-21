@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { _saveQuestion } from '../../utils/_DATA'
 import { addQuestion } from '../../actions/questions'
@@ -83,6 +84,10 @@ const mapStateToProps = state => {
   return {
     author: state.authedUser,
   }
+}
+
+CreateQuestion.propTypes = {
+  author: PropTypes.string,
 }
 
 export default connect(mapStateToProps)(CreateQuestion)

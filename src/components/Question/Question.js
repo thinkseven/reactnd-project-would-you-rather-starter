@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Navigation from '../Navigation/Navigation'
 import { addUserPoll } from '../../actions/users'
@@ -62,7 +63,7 @@ class Question extends Component {
                       checked={this.state.selectedOption === optionId}
                       onChange={this.handleOptionSelection}
                     />
-                    <label for={text}>{text}</label>
+                    <label htmlFor={text}>{text}</label>
                   </div>
                 )
               })}
@@ -105,6 +106,19 @@ const mapStateToProps = ({ authedUser, users, questions }, { match }) => {
     questionId: id,
     options: getOptions(questions[id], id),
   }
+}
+
+Question.propTypes = {
+  name: PropTypes.string,
+  avatarURL: PropTypes.string,
+  authedUser: PropTypes.string,
+  questionId: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      optionId: PropTypes.string,
+      text: PropTypes.string,
+    }),
+  ),
 }
 
 export default connect(mapStateToProps)(Question)

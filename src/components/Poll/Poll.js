@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Navigation from '../Navigation/Navigation'
 import './Poll.css'
@@ -21,30 +22,28 @@ class Poll extends Component {
               <div>
                 <h3>Results</h3>
               </div>
-              {options.map(option => {
+              {options.map((option, index) => {
                 const { yourVote, text, votes, totalVotes } = option
                 const percentage = Math.round((votes / totalVotes) * 100)
                 return (
-                  <div>
+                  <div key={index}>
                     <div>
                       <p>
                         {text}
                         {yourVote && <span className="badge">Your vote</span>}
                       </p>
                     </div>
-                    <div class="w3-light-grey">
+                    <div className="w3-light-grey">
                       <div
-                        class="w3-container w3-green w3-center"
-                        style={{ width: `${percentage}%` }}
-                      >
+                        className="w3-container w3-green w3-center"
+                        style={{ width: `${percentage}%` }}>
                         {`${percentage}%`}
                       </div>
                     </div>
                     <div
                       style={{
                         textAlign: 'center',
-                      }}
-                    >{`${votes} out of ${totalVotes}`}</div>
+                      }}>{`${votes} out of ${totalVotes}`}</div>
                   </div>
                 )
               })}
@@ -80,6 +79,19 @@ const mapStateToProps = ({ authedUser, users, questions }, { match }) => {
     avatarURL: users[questions[id].author].avatarURL,
     options: getOptions(questions[id]),
   }
+}
+
+Poll.propTypes = {
+  name: PropTypes.string,
+  avatarUrl: PropTypes.string,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      yourVote: PropTypes.boolean,
+      text: PropTypes.string,
+      votes: PropTypes.number,
+      totalVotes: PropTypes.number,
+    }),
+  ),
 }
 
 export default connect(mapStateToProps)(Poll)

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 class Score extends PureComponent {
   render() {
@@ -36,6 +37,14 @@ class Score extends PureComponent {
       </div>
     )
   }
+}
+
+Score.propTypes = {
+  answeredQuestionsCount: PropTypes.number,
+  avatarURL: PropTypes.string,
+  createdQuestionsCount: PropTypes.number,
+  name: PropTypes.string,
+  score: PropTypes.number,
 }
 
 export default Score

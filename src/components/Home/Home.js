@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Navigation from '../Navigation/Navigation'
 import Question from './Question'
@@ -17,6 +18,7 @@ class Home extends Component {
               const { name, avatarURL, id, options } = question
               return (
                 <Question
+                  key={id}
                   name={name}
                   avatarURL={avatarURL}
                   id={id}
@@ -32,6 +34,7 @@ class Home extends Component {
               const { name, avatarURL, id, options } = question
               return (
                 <Question
+                  key={id}
                   name={name}
                   avatarURL={avatarURL}
                   id={id}
@@ -87,6 +90,37 @@ const mapStateToProps = ({ authedUser, users, questions }) => {
     unansweredQuestions: formatQuestion(users, questions, unasweredQuestions),
     answeredQuestions: formatQuestion(users, questions, answeredQuestions),
   }
+}
+
+Home.propTypes = {
+  unansweredQuestions: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      avatarURL: PropTypes.string,
+      id: PropTypes.string,
+      options: PropTypes.arrayOf(
+        PropTypes.shape({
+          questionId: PropTypes.string,
+          text: PropTypes.string,
+        }),
+      ),
+      timestamp: PropTypes.number,
+    }),
+  ),
+  answeredQuestions: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      avatarURL: PropTypes.string,
+      id: PropTypes.string,
+      options: PropTypes.arrayOf(
+        PropTypes.shape({
+          questionId: PropTypes.string,
+          text: PropTypes.string,
+        }),
+      ),
+      timestamp: PropTypes.number,
+    }),
+  ),
 }
 
 export default connect(mapStateToProps)(Home)
