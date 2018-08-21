@@ -60,16 +60,19 @@ const formatQuestion = (users, questions, filteredQuestions) => {
     return options
   }
 
-  return filteredQuestions.map(key => {
-    const { author, id } = questions[key]
-    const { avatarURL, name } = users[author]
-    return {
-      name,
-      avatarURL,
-      id,
-      options: getOptions(questions[key], id),
-    }
-  })
+  return filteredQuestions
+    .map(key => {
+      const { author, id, timestamp } = questions[key]
+      const { avatarURL, name } = users[author]
+      return {
+        name,
+        avatarURL,
+        id,
+        options: getOptions(questions[key], id),
+        timestamp,
+      }
+    })
+    .sort((a, b) => b.timestamp - a.timestamp)
 }
 
 const mapStateToProps = ({ authedUser, users, questions }) => {

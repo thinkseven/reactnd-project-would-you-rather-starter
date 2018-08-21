@@ -18,7 +18,7 @@ class Question extends Component {
 
   handlerSubmitPoll = event => {
     event.preventDefault()
-    const { dispatch, authedUser, questionId } = this.props
+    const { dispatch, history, authedUser, questionId } = this.props
     const { selectedOption } = this.state
     dispatch(
       addUserPoll({
@@ -34,6 +34,7 @@ class Question extends Component {
         selectedOption,
       }),
     )
+    history.push(`/question/poll/${questionId}`)
   }
 
   render() {
@@ -70,8 +71,7 @@ class Question extends Component {
                   className="w3-button w3-black"
                   name="submit"
                   type="submit"
-                  onClick={this.handlerSubmitPoll}
-                >
+                  onClick={this.handlerSubmitPoll}>
                   Submit
                 </button>
               </div>
