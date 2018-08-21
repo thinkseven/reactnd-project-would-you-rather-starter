@@ -4,6 +4,7 @@ import { createStore, compose } from 'redux'
 import { Provider } from 'react-redux'
 import './styles.css'
 import reducer from './reducers'
+import middleware from './middleware'
 import App from './components/App'
 
 const composeEnhancers =
@@ -13,7 +14,7 @@ const composeEnhancers =
       })
     : compose
 
-const enhancer = composeEnhancers()
+const enhancer = composeEnhancers(middleware)
 const store = createStore(reducer, enhancer)
 
 ReactDOM.render(

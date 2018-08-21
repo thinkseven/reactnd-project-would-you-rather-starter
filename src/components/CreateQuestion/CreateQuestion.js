@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { _saveQuestion } from '../../utils/_DATA'
-import { addQuestion } from '../../actions/questions'
-import { addUserQuestion } from '../../actions/users'
+import { AddQuestion } from '../../actions/shared'
 import Navigation from '../Navigation/Navigation'
 import './CreateQuestion.css'
 
@@ -25,15 +23,12 @@ class CreateQuestion extends Component {
   handleSubmit = event => {
     event.preventDefault()
     const { author, dispatch, history } = this.props
-    _saveQuestion({ ...this.state, author: author }).then(question => {
-      dispatch(addQuestion(question))
-      dispatch(addUserQuestion(question))
-      this.setState({
-        optionOneText: '',
-        optionTwoText: '',
-      })
-      history.push('/')
+    dispatch(AddQuestion({ ...this.state, author: author }))
+    this.setState({
+      optionOneText: '',
+      optionTwoText: '',
     })
+    history.push('/')
   }
 
   render() {

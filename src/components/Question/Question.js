@@ -2,9 +2,7 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Navigation from '../Navigation/Navigation'
-import { addUserPoll } from '../../actions/users'
-import { addQuestionPoll } from '../../actions/questions'
-import { _saveQuestionAnswer } from '../../utils/_DATA'
+import { SubmitPoll } from '../../actions/shared'
 import './Question.css'
 
 class Question extends Component {
@@ -22,27 +20,14 @@ class Question extends Component {
     event.preventDefault()
     const { dispatch, history, authedUser, questionId } = this.props
     const { selectedOption } = this.state
-    _saveQuestionAnswer({
-      authedUser: authedUser,
-      qid: questionId,
-      answer: selectedOption,
-    }).then(() => {
-      dispatch(
-        addUserPoll({
-          authedUser,
-          questionId,
-          selectedOption,
-        }),
-      )
-      dispatch(
-        addQuestionPoll({
-          authedUser,
-          questionId,
-          selectedOption,
-        }),
-      )
-      history.push(`/question/poll/${questionId}`)
-    })
+    dispatch(
+      SubmitPoll({
+        authedUser: authedUser,
+        qid: questionId,
+        answer: selectedOption,
+      }),
+    )
+    history.push(`/question/poll/${questionId}`)
   }
 
   render() {

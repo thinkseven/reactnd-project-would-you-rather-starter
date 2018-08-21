@@ -1,9 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import login from '../../actions/authentication'
-import getUsers from '../../actions/users'
-import getQuestions from '../../actions/questions'
-import { _getUsers, _getQuestions } from '../../utils/_DATA'
+import LoginUser from '../../actions/shared'
 import Header from '../Header/Header'
 import './Auth.css'
 
@@ -20,19 +17,7 @@ class Login extends Component {
 
   handleLogin = () => {
     const { dispatch } = this.props
-    Promise.all([_getUsers(), _getQuestions()]).then(([users, questions]) => {
-      dispatch(
-        getUsers({
-          ...users,
-        }),
-      )
-      dispatch(
-        getQuestions({
-          ...questions,
-        }),
-      )
-      dispatch(login(this.state.currentUser))
-    })
+    dispatch(LoginUser(this.state.currentUser))
   }
 
   render() {
