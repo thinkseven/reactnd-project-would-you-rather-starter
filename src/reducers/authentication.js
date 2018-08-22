@@ -1,11 +1,11 @@
 import { LOGIN_USER, LOGOUT_USER } from '../actions/authentication'
 
-export default function authedUser(state = null, action) {
+export default function authedUser(state = {}, action) {
   switch (action.type) {
     case LOGIN_USER:
-      return action.userid
+      return action.authedUser
     case LOGOUT_USER:
-      return ''
+      return {}
     default:
       return state
   }

@@ -35,10 +35,11 @@ Logout.propTypes = {
   avatarURL: PropTypes.string.isRequired,
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ authedUser }) => {
+  const { name, avatarURL } = authedUser
   return {
-    name: state.users[state.authedUser].name,
-    avatarURL: state.users[state.authedUser].avatarURL,
+    name,
+    avatarURL,
   }
 }
 

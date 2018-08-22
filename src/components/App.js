@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,6 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import Home from './Home/Home'
 import Login from './Auth/Login'
 import LeaderBoard from './LeaderBoard/LeaderBoard'
@@ -13,7 +14,7 @@ import CreateQuestion from './CreateQuestion/CreateQuestion'
 import Poll from './Poll/Poll'
 import Question from './Question/Question'
 
-class App extends PureComponent {
+class App extends Component {
   render() {
     const { loggedin } = this.props
     return (
@@ -41,9 +42,16 @@ class App extends PureComponent {
 }
 
 function mapStateToProps({ authedUser }) {
-  return {
-    loggedin: authedUser !== null && authedUser !== '',
+  function isLoggedIn(user) {
+    return user && user.id && user.name ? true : false
   }
+  return {
+    loggedin: isLoggedIn(authedUser),
+  }
+}
+
+App.propTypes = {
+  loggedin: PropTypes.bool,
 }
 
 export default connect(mapStateToProps)(App)

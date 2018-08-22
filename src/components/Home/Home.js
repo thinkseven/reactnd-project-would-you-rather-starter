@@ -1,11 +1,16 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { getPostAuthData } from '../../actions/shared'
 import Navigation from '../Navigation/Navigation'
 import Question from './Question'
 import './Home.css'
 
 class Home extends Component {
+  componentDidMount() {
+    this.props.dispatch(getPostAuthData())
+  }
+
   render() {
     const { answeredQuestions, unansweredQuestions } = this.props
     return (
@@ -80,10 +85,10 @@ const formatQuestion = (users, questions, filteredQuestions) => {
 
 const mapStateToProps = ({ authedUser, users, questions }) => {
   const unasweredQuestions = Object.keys(questions).filter(key => {
-    return !Object.keys(users[authedUser].answers).includes(key)
+    return !Object.keys(authedUser.answers).includes(key)
   })
   const answeredQuestions = Object.keys(questions).filter(key => {
-    return Object.keys(users[authedUser].answers).includes(key)
+    return Object.keys(authedUser.answers).includes(key)
   })
 
   return {

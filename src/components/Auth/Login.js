@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import LoginUser from '../../actions/shared'
+import AuthenticateUser from '../../actions/shared'
 import Header from '../Header/Header'
 import './Auth.css'
 
@@ -17,7 +17,7 @@ class Login extends Component {
 
   handleLogin = () => {
     const { dispatch } = this.props
-    dispatch(LoginUser(this.state.currentUser))
+    dispatch(AuthenticateUser(this.state.currentUser))
   }
 
   render() {
@@ -34,7 +34,8 @@ class Login extends Component {
                 name="uname"
                 onChange={e => {
                   this.changeUser(e.target.value)
-                }}>
+                }}
+              >
                 <option>-- Select Login User --</option>
                 <option value="sarahedo">Sarah Edo</option>
                 <option value="tylermcginnis">Tyler McGinnis</option>

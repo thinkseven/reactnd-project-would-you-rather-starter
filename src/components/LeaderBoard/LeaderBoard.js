@@ -2,10 +2,14 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './LeaderBoard.css'
+import { getPostAuthData } from '../../actions/shared'
 import Score from './Score'
 import Navigation from '../Navigation/Navigation'
 
 class LeaderBoard extends Component {
+  componentDidMount() {
+    this.props.dispatch(getPostAuthData())
+  }
   render() {
     return (
       <Fragment>
