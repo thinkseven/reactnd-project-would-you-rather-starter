@@ -8,8 +8,10 @@ import Navigation from '../Navigation/Navigation'
 
 class LeaderBoard extends Component {
   componentDidMount() {
-    this.props.dispatch(getPostAuthData())
+    const { dispatch } = this.props
+    dispatch(getPostAuthData())
   }
+
   render() {
     return (
       <Fragment>

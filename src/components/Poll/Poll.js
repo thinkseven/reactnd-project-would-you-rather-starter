@@ -57,7 +57,6 @@ class Poll extends Component {
 
 const mapStateToProps = ({ authedUser, users, questions }, { match }) => {
   const id = match.params.id
-
   const formatOption = (option, totalVote) => ({
     yourVote: option.votes.includes(authedUser),
     text: `Would you rather ${option.text}`,

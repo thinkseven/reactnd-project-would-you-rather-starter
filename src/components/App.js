@@ -13,6 +13,7 @@ import LeaderBoard from './LeaderBoard/LeaderBoard'
 import CreateQuestion from './CreateQuestion/CreateQuestion'
 import Poll from './Poll/Poll'
 import Question from './Question/Question'
+import LoadingBar from 'react-redux-loading'
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
+          <LoadingBar />
           {loggedin ? (
             <Switch>
               <Route exact path="/" component={Home} />
@@ -42,11 +44,8 @@ class App extends Component {
 }
 
 function mapStateToProps({ authedUser }) {
-  function isLoggedIn(user) {
-    return user && user.id && user.name ? true : false
-  }
   return {
-    loggedin: isLoggedIn(authedUser),
+    loggedin: authedUser && authedUser.id && authedUser.name ? true : false,
   }
 }
 

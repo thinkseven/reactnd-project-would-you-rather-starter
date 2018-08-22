@@ -5,8 +5,8 @@ import {
   _saveQuestionAnswer,
 } from './_DATA'
 
-export function getUser() {
-  return _getUsers()
+export function getUser(userid) {
+  return _getUsers().then(users => ({ ...users[userid] }))
 }
 
 export function getUsersQuestions() {

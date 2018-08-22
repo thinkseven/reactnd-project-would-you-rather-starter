@@ -8,7 +8,8 @@ import './Home.css'
 
 class Home extends Component {
   componentDidMount() {
-    this.props.dispatch(getPostAuthData())
+    const { dispatch } = this.props
+    dispatch(getPostAuthData())
   }
 
   render() {
@@ -85,10 +86,10 @@ const formatQuestion = (users, questions, filteredQuestions) => {
 
 const mapStateToProps = ({ authedUser, users, questions }) => {
   const unasweredQuestions = Object.keys(questions).filter(key => {
-    return !Object.keys(authedUser.answers).includes(key)
+    return !Object.keys(users[authedUser.id].answers).includes(key)
   })
   const answeredQuestions = Object.keys(questions).filter(key => {
-    return Object.keys(authedUser.answers).includes(key)
+    return Object.keys(users[authedUser.id].answers).includes(key)
   })
 
   return {

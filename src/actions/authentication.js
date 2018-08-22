@@ -1,10 +1,10 @@
 export const LOGIN_USER = 'LOGIN_USER'
 export const LOGOUT_USER = 'LOGOUT_USER'
 
-export default function login(authedUser) {
+export default function login({ id, name, avatarURL }) {
   return {
     type: LOGIN_USER,
-    authedUser,
+    authedUser: { id, name, avatarURL },
   }
 }
 

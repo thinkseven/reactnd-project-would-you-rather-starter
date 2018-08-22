@@ -10,14 +10,16 @@ import getQuestions, {
   addQuestionPoll,
 } from '../actions/questions'
 import login from '../actions/authentication'
+import { showLoading, hideLoading } from 'react-redux-loading'
 
 export default function AuthenticateUser(userid) {
   return dispatch => {
-    getUser().then(users => {
+    dispatch(showLoading())
+    return getUser(userid).then(user => {
       setTimeout(() => {
-        const user = { ...users[userid] }
-        if (user && userid === user.id) {
+        if (user && user.id && user.id === userid) {
           dispatch(login(user))
+          dispatch(hideLoading())
         }
       }, 2000)
     })
@@ -26,6 +28,7 @@ export default function AuthenticateUser(userid) {
 
 export function getPostAuthData() {
   return dispatch => {
+    dispatch(showLoading())
     return getUsersQuestions().then(({ users, questions }) => {
       dispatch(
         getUsers({
@@ -37,12 +40,14 @@ export function getPostAuthData() {
           ...questions,
         }),
       )
+      dispatch(hideLoading())
     })
   }
 }
 
 export function SubmitPoll({ authedUser, qid, answer }) {
   return dispatch => {
+    dispatch(showLoading())
     saveQuestionAnswer({
       authedUser,
       qid,
@@ -62,15 +67,18 @@ export function SubmitPoll({ authedUser, qid, answer }) {
           selectedOption: answer,
         }),
       )
+      dispatch(hideLoading())
     })
   }
 }
 
 export function AddQuestion(question) {
   return dispatch => {
+    dispatch(showLoading())
     saveQuestion(question).then(question => {
       dispatch(addQuestion(question))
       dispatch(addUserQuestion(question))
+      dispatch(hideLoading())
     })
   }
 }

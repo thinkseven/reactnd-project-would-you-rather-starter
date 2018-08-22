@@ -79,9 +79,8 @@ class CreateQuestion extends Component {
 }
 
 const mapStateToProps = ({ authedUser }) => {
-  const { author } = authedUser
   return {
-    author,
+    author: authedUser.id,
   }
 }
 

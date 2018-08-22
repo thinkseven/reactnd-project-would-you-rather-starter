@@ -78,7 +78,6 @@ class Question extends Component {
 
 const mapStateToProps = ({ authedUser, users, questions }, { match }) => {
   const id = match.params.id
-
   const formatOption = (optionId, { text }) => ({
     optionId,
     text,
@@ -94,7 +93,7 @@ const mapStateToProps = ({ authedUser, users, questions }, { match }) => {
   return {
     name: users[questions[id].author].name,
     avatarURL: users[questions[id].author].avatarURL,
-    authedUser,
+    authedUser: authedUser.id,
     questionId: id,
     options: getOptions(questions[id], id),
   }
