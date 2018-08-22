@@ -1,8 +1,13 @@
-import { GET_USERS, ADD_USER_QUESTION, ADD_USER_POLL } from '../actions/users'
+import {
+  FETCH_USERS,
+  ADD_USER_QUESTION,
+  ADD_USER_POLL,
+  RESET_USERS,
+} from '../actions/users'
 
 export default function users(state = {}, action) {
   switch (action.type) {
-    case GET_USERS:
+    case FETCH_USERS:
       return {
         ...state,
         ...action.users,
@@ -29,6 +34,8 @@ export default function users(state = {}, action) {
           },
         },
       }
+    case RESET_USERS:
+      return {}
     default:
       return state
   }

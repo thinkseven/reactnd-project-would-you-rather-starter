@@ -1,12 +1,13 @@
 import {
-  GET_QUESTIONS,
+  FETCH_QUESTIONS,
   ADD_QUESTION,
   ADD_QUESTION_POLL,
+  RESET_QUESTIONS,
 } from '../actions/questions'
 
 export default function questions(state = {}, action) {
   switch (action.type) {
-    case GET_QUESTIONS:
+    case FETCH_QUESTIONS:
       return {
         ...state,
         ...action.questions,
@@ -31,6 +32,8 @@ export default function questions(state = {}, action) {
           },
         },
       }
+    case RESET_QUESTIONS:
+      return {}
     default:
       return state
   }

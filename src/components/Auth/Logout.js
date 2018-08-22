@@ -2,11 +2,16 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { logout } from '../../actions/authentication'
+import { resetUsers } from '../../actions/users'
+import { resetQuestions } from '../../actions/questions'
 import './Auth.css'
 
 class Logout extends PureComponent {
   handleLogout = event => {
-    this.props.dispatch(logout())
+    const { dispatch } = this.props
+    dispatch(logout())
+    dispatch(resetUsers())
+    dispatch(resetQuestions())
   }
 
   render() {

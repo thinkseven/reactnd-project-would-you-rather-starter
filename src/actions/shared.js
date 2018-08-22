@@ -4,8 +4,8 @@ import {
   saveQuestion,
   saveQuestionAnswer,
 } from '../utils/API'
-import getUsers, { addUserQuestion, addUserPoll } from '../actions/users'
-import getQuestions, {
+import fetchUsers, { addUserQuestion, addUserPoll } from '../actions/users'
+import fetchQuestions, {
   addQuestion,
   addQuestionPoll,
 } from '../actions/questions'
@@ -31,12 +31,12 @@ export function getPostAuthData() {
     dispatch(showLoading())
     return getUsersQuestions().then(({ users, questions }) => {
       dispatch(
-        getUsers({
+        fetchUsers({
           ...users,
         }),
       )
       dispatch(
-        getQuestions({
+        fetchQuestions({
           ...questions,
         }),
       )
