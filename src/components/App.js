@@ -11,9 +11,9 @@ import Home from './Home/Home'
 import Login from './Auth/Login'
 import LeaderBoard from './LeaderBoard/LeaderBoard'
 import CreateQuestion from './CreateQuestion/CreateQuestion'
-import Poll from './Poll/Poll'
 import Question from './Question/Question'
 import LoadingBar from 'react-redux-loading'
+import Navigation from './Navigation/Navigation'
 
 class App extends Component {
   render() {
@@ -23,19 +23,27 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           {loggedin ? (
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/add" component={CreateQuestion} />
-              <Route exact path="/question/:id" component={Question} />
-              <Route exact path="/question/poll/:id" component={Poll} />
-              <Route exact path="/leaderboard" component={LeaderBoard} />
-              <Route render={() => <h2>404 page not found</h2>} />
-            </Switch>
+            <Fragment>
+              <Navigation />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/add" component={CreateQuestion} />
+                <Route
+                  exact
+                  path="/question/:question_id"
+                  component={Question}
+                />
+                <Route exact path="/leaderboard" component={LeaderBoard} />
+                <Route render={() => <h2>404 page not found</h2>} />
+              </Switch>
+            </Fragment>
           ) : (
-            <Switch>
-              <Route exact path="/" component={Login} />
-              <Redirect to="/" />
-            </Switch>
+            <Fragment>
+              <Switch>
+                <Route exact path="/" component={Login} />
+                <Redirect to="/" />
+              </Switch>
+            </Fragment>
           )}
         </Fragment>
       </Router>

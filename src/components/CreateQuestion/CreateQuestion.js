@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { AddQuestion } from '../../actions/shared'
-import Navigation from '../Navigation/Navigation'
 import './CreateQuestion.css'
 
 class CreateQuestion extends Component {
@@ -53,7 +52,6 @@ class CreateQuestion extends Component {
   render() {
     return (
       <Fragment>
-        <Navigation />
         <div className="newQuestion">
           <div>
             <h2>Create New Question</h2>

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import './LeaderBoard.css'
 import { getPostAuthData } from '../../actions/shared'
 import Score from './Score'
-import Navigation from '../Navigation/Navigation'
 
 class LeaderBoard extends Component {
   componentDidMount() {
@@ -15,7 +14,6 @@ class LeaderBoard extends Component {
   render() {
     return (
       <Fragment>
-        <Navigation />
         <div className="leaderBoard">
           <div className="header">Leader Board</div>
           {this.props.scores.map(score => (

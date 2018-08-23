@@ -29,7 +29,7 @@ class Question extends PureComponent {
             })}
             <div>
               {answeredflag === true ? (
-                <Link to={`/question/poll/${id}`}>View Poll</Link>
+                <Link to={`/question/${id}`}>View Poll</Link>
               ) : (
                 <Link to={`/question/${id}`}>View Poll</Link>
               )}

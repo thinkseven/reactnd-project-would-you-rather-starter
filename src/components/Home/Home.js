@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getPostAuthData } from '../../actions/shared'
-import Navigation from '../Navigation/Navigation'
 import Question from './Question'
 import './Home.css'
 
@@ -16,7 +15,6 @@ class Home extends Component {
     const { answeredQuestions, unansweredQuestions } = this.props
     return (
       <Fragment>
-        <Navigation />
         <div className="home">
           <div className="home-left">
             <div className="header">Unaswered Questions</div>
