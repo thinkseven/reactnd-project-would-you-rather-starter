@@ -185,7 +185,7 @@ export function _getUsers() {
 
 export function _getQuestions() {
   return new Promise((res, rej) => {
-    setTimeout(() => res({ ...questions }), 3000)
+    setTimeout(() => res({ ...questions }), 1000)
   })
 }
 
@@ -225,7 +225,7 @@ export function _saveQuestion(question) {
       }
 
       res(formattedQuestion)
-    }, 3000)
+    }, 1000)
   })
 }
 
@@ -255,6 +255,6 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
       }
 
       res()
-    }, 3000)
+    }, 500)
   })
 }
