@@ -19,7 +19,7 @@ class Navigation extends PureComponent {
       <div>
         <div className="topnav" ref={this.myRef}>
           <Link to="/">Home</Link>
-          <Link to="/question/create">New Question</Link>
+          <Link to="/add">New Question</Link>
           <Link to="/leaderboard">Leader Board</Link>
           <a className="icon" onClick={this.handleTab}>
             <i className="fa fa-bars" />

@@ -9,26 +9,45 @@ class CreateQuestion extends Component {
   state = {
     optionOneText: '',
     optionTwoText: '',
+    errorMsg: '',
   }
 
   hanldeOption = event => {
     event.preventDefault()
-    event.persist()
+    const { name, value } = event.target
     this.setState(prevState => ({
       ...prevState,
-      [event.target.name]: event.target.value,
+      [name]: value,
     }))
   }
 
   handleSubmit = event => {
     event.preventDefault()
-    const { author, dispatch, history } = this.props
-    dispatch(AddQuestion({ ...this.state, author: author }))
-    this.setState({
-      optionOneText: '',
-      optionTwoText: '',
-    })
-    history.push('/')
+    const { optionOneText, optionTwoText } = this.state
+    if (
+      optionOneText === null ||
+      optionTwoText === null ||
+      optionOneText === '' ||
+      optionTwoText === ''
+    ) {
+      this.setState(prevState => ({
+        ...prevState,
+        errorMsg: 'Error: Please provide the options for the question!!',
+      }))
+    } else {
+      const { author, dispatch, history } = this.props
+      dispatch(AddQuestion({ ...this.state, author: author }))
+      this.setState(
+        {
+          optionOneText: '',
+          optionTwoText: '',
+          errorMsg: '',
+        },
+        () => {
+          history.push('/')
+        },
+      )
+    }
   }
 
   render() {
@@ -39,6 +58,12 @@ class CreateQuestion extends Component {
           <div>
             <h2>Create New Question</h2>
           </div>
+          {this.state.errorMsg !== null &&
+            this.state.errorMsg !== '' && (
+              <div className="w3-panel w3-red">
+                <p>{this.state.errorMsg}</p>
+              </div>
+            )}
           <div>
             <div>
               <h3>Would you rather ...</h3>

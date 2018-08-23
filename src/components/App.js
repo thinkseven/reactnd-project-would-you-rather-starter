@@ -25,7 +25,7 @@ class App extends Component {
           {loggedin ? (
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/question/create" component={CreateQuestion} />
+              <Route exact path="/add" component={CreateQuestion} />
               <Route exact path="/question/:id" component={Question} />
               <Route exact path="/question/poll/:id" component={Poll} />
               <Route exact path="/leaderboard" component={LeaderBoard} />
