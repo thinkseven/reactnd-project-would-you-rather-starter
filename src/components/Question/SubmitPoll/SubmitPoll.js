@@ -40,28 +40,30 @@ class SubmitQuestionPoll extends PureComponent {
             </div>
             <div className="right">
               <div>Would You Rather ...</div>
-              {options.map(option => {
-                const { optionId, text } = option
-                return (
-                  <div key={optionId}>
-                    <input
-                      type="radio"
-                      name={questionId}
-                      id={optionId}
-                      value={optionId}
-                      checked={this.state.selectedOption === optionId}
-                      onChange={this.handleOptionSelection}
-                    />
-                    <label htmlFor={text}>{text}</label>
-                  </div>
-                )
-              })}
+              {options &&
+                options.map(option => {
+                  const { optionId, text } = option
+                  return (
+                    <div key={optionId}>
+                      <input
+                        type="radio"
+                        name={questionId}
+                        id={optionId}
+                        value={optionId}
+                        checked={this.state.selectedOption === optionId}
+                        onChange={this.handleOptionSelection}
+                      />
+                      <label htmlFor={text}>{text}</label>
+                    </div>
+                  )
+                })}
               <div>
                 <button
                   className="w3-button w3-black"
                   name="submit"
                   type="submit"
-                  onClick={this.handlerSubmitPoll}>
+                  onClick={this.handlerSubmitPoll}
+                >
                   Submit
                 </button>
               </div>

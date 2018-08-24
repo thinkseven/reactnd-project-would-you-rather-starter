@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { logout } from '../../actions/authentication'
@@ -8,10 +9,11 @@ import './Auth.css'
 
 class Logout extends PureComponent {
   handleLogout = event => {
-    const { dispatch } = this.props
+    const { dispatch, history } = this.props
     dispatch(logout())
     dispatch(resetUsers())
     dispatch(resetQuestions())
+    history.push('/')
   }
 
   render() {
@@ -48,4 +50,4 @@ const mapStateToProps = ({ authedUser }) => {
   }
 }
 
-export default connect(mapStateToProps)(Logout)
+export default withRouter(connect(mapStateToProps)(Logout))

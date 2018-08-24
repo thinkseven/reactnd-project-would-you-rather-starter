@@ -19,31 +19,34 @@ class ViewPoll extends PureComponent {
               <div>
                 <h3>Results</h3>
               </div>
-              {options.map((option, index) => {
-                const { yourVote, text, votes, totalVotes } = option
-                const percentage = Math.round((votes / totalVotes) * 100)
-                return (
-                  <div key={index}>
-                    <div>
-                      <p>
-                        {text}
-                        {yourVote && <span className="badge">Your vote</span>}
-                      </p>
-                    </div>
-                    <div className="w3-light-grey">
-                      <div
-                        className="w3-container w3-green w3-center"
-                        style={{ width: `${percentage}%` }}>
-                        {`${percentage}%`}
+              {options &&
+                options.map((option, index) => {
+                  const { yourVote, text, votes, totalVotes } = option
+                  const percentage = Math.round((votes / totalVotes) * 100)
+                  return (
+                    <div key={index}>
+                      <div>
+                        <p>
+                          {text}
+                          {yourVote && <span className="badge">Your vote</span>}
+                        </p>
                       </div>
+                      <div className="w3-light-grey">
+                        <div
+                          className="w3-container w3-green w3-center"
+                          style={{ width: `${percentage}%` }}
+                        >
+                          {`${percentage}%`}
+                        </div>
+                      </div>
+                      <div
+                        style={{
+                          textAlign: 'center',
+                        }}
+                      >{`${votes} out of ${totalVotes}`}</div>
                     </div>
-                    <div
-                      style={{
-                        textAlign: 'center',
-                      }}>{`${votes} out of ${totalVotes}`}</div>
-                  </div>
-                )
-              })}
+                  )
+                })}
             </div>
           </div>
         </div>
