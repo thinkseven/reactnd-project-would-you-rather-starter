@@ -18,33 +18,23 @@ export default function AuthenticateUser(userid) {
     return getUser(userid).then(user => {
       setTimeout(() => {
         if (user && user.id && user.id === userid) {
-          dispatch(login(user))
-          dispatch(hideLoading())
+          return getUsersQuestions().then(({ users, questions }) => {
+            dispatch(
+              fetchUsers({
+                ...users,
+              }),
+            )
+            dispatch(
+              fetchQuestions({
+                ...questions,
+              }),
+            )
+            dispatch(hideLoading())
+            dispatch(login(user))
+          })
         }
       }, 2000)
     })
-  }
-}
-
-export function getPostAuthData() {
-  return (dispatch, getState) => {
-    const { authedUser } = getState()
-    if (authedUser && authedUser.id && authedUser.name) {
-      dispatch(showLoading())
-      return getUsersQuestions().then(({ users, questions }) => {
-        dispatch(
-          fetchUsers({
-            ...users,
-          }),
-        )
-        dispatch(
-          fetchQuestions({
-            ...questions,
-          }),
-        )
-        dispatch(hideLoading())
-      })
-    }
   }
 }
 

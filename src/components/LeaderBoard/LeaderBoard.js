@@ -6,6 +6,7 @@ import Score from './Score'
 
 class LeaderBoard extends Component {
   render() {
+    console.log('Leaderboard App render')
     return (
       <Fragment>
         <div className="leaderBoard">

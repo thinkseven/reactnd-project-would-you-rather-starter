@@ -7,25 +7,41 @@ import './Auth.css'
 class Login extends Component {
   state = {
     currentUser: '',
+    errorMsg: '',
   }
 
   changeUser = user => {
     this.setState({
       currentUser: user,
+      errorMsg: '',
     })
   }
 
   handleLogin = () => {
-    const { dispatch } = this.props
-    dispatch(AuthenticateUser(this.state.currentUser))
+    if (this.state.currentUser !== '') {
+      const { dispatch } = this.props
+      dispatch(AuthenticateUser(this.state.currentUser))
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        errorMsg: 'Error: Please select the userid!!',
+      }))
+    }
   }
 
   render() {
+    console.log('login render')
     return (
       <Fragment>
         <Header />
         <div className="login">
           <div className="content">
+            {this.state.errorMsg !== null &&
+              this.state.errorMsg !== '' && (
+                <div className="w3-panel w3-red">
+                  <p>{this.state.errorMsg}</p>
+                </div>
+              )}
             <div className="item">
               <label htmlFor="uname">
                 <b>Select a login user</b>
@@ -33,9 +49,11 @@ class Login extends Component {
               <select
                 name="uname"
                 onChange={e => {
-                  this.changeUser(e.target.value)
-                }}
-              >
+                  console.log(e.target.value)
+                  if (e.target.value !== '-- Select Login User --') {
+                    this.changeUser(e.target.value)
+                  }
+                }}>
                 <option>-- Select Login User --</option>
                 <option value="sarahedo">Sarah Edo</option>
                 <option value="tylermcginnis">Tyler McGinnis</option>

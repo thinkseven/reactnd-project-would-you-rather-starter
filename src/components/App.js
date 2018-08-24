@@ -7,6 +7,7 @@ import SecuredApp from './SecuredApp/SecuredApp'
 
 class App extends Component {
   render() {
+    console.log('App render')
     const { loggedin } = this.props
     return (
       <Fragment>

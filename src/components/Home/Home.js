@@ -6,6 +6,7 @@ import './Home.css'
 
 class Home extends Component {
   render() {
+    console.log('Home Component render')
     const { answeredQuestions, unansweredQuestions } = this.props
     return (
       <Fragment>

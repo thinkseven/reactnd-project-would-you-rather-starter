@@ -7,15 +7,10 @@ import Home from '../Home/Home'
 import Question from '../Question/Question'
 import LeaderBoard from '../LeaderBoard/LeaderBoard'
 import CreateQuestion from '../CreateQuestion/CreateQuestion'
-import { getPostAuthData } from '../../actions/shared'
 
 class SecuredApp extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(getPostAuthData())
-  }
-
   render() {
+    console.log('Secure App render')
     return (
       <Router>
         <Fragment>
