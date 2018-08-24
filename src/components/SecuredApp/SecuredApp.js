@@ -23,9 +23,9 @@ class SecuredApp extends Component {
           <Logout />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/add" component={CreateQuestion} />
-            <Route path="/question/:question_id" component={Question} />
-            <Route path="/leaderboard" component={LeaderBoard} />
+            <Route exact path="/add" component={CreateQuestion} />
+            <Route exact path="/question/:question_id" component={Question} />
+            <Route exact path="/leaderboard" component={LeaderBoard} />
             <Route
               render={() => (
                 <div className="w3-panel w3-red w3-card-4">

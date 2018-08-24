@@ -1,9 +1,10 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { SubmitPoll } from '../../../actions/shared'
 import '../SubmitPoll/SubmitPoll.css'
 
-class SubmitQuestionPoll extends PureComponent {
+class SubmitQuestionPoll extends Component {
   state = {
     selectedOption: 'optionOne',
   }
@@ -88,4 +89,4 @@ SubmitQuestionPoll.propTypes = {
   ),
 }
 
-export default SubmitQuestionPoll
+export default connect()(SubmitQuestionPoll)

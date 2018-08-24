@@ -1,8 +1,9 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import '../ViewPoll/ViewPoll.css'
 
-class ViewPoll extends PureComponent {
+class ViewPoll extends Component {
   render() {
     const { name, avatarURL, options } = this.props
     return (
@@ -68,4 +69,4 @@ ViewPoll.propTypes = {
   ),
 }
 
-export default ViewPoll
+export default connect()(ViewPoll)
