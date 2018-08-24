@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
-import Logout from '../Auth/Logout'
 import './Navigation.css'
 
 class Navigation extends PureComponent {
@@ -25,7 +24,6 @@ class Navigation extends PureComponent {
             <i className="fa fa-bars" />
           </a>
         </div>
-        <Logout />
       </div>
     )
   }

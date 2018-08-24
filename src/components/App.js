@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Home from './Home/Home'
 import Login from './Auth/Login'
+import Logout from './Auth/Logout'
 import LeaderBoard from './LeaderBoard/LeaderBoard'
 import CreateQuestion from './CreateQuestion/CreateQuestion'
 import Question from './Question/Question'
@@ -25,6 +26,7 @@ class App extends Component {
           {loggedin ? (
             <Fragment>
               <Navigation />
+              <Logout />
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/add" component={CreateQuestion} />
