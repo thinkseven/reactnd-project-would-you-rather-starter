@@ -27,21 +27,24 @@ export default function AuthenticateUser(userid) {
 }
 
 export function getPostAuthData() {
-  return dispatch => {
-    dispatch(showLoading())
-    return getUsersQuestions().then(({ users, questions }) => {
-      dispatch(
-        fetchUsers({
-          ...users,
-        }),
-      )
-      dispatch(
-        fetchQuestions({
-          ...questions,
-        }),
-      )
-      dispatch(hideLoading())
-    })
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+    if (authedUser && authedUser.id && authedUser.name) {
+      dispatch(showLoading())
+      return getUsersQuestions().then(({ users, questions }) => {
+        dispatch(
+          fetchUsers({
+            ...users,
+          }),
+        )
+        dispatch(
+          fetchQuestions({
+            ...questions,
+          }),
+        )
+        dispatch(hideLoading())
+      })
+    }
   }
 }
 
