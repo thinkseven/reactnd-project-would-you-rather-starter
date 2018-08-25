@@ -11,6 +11,7 @@ class Question extends Component {
       <Fragment>
         {status === 'NOT FOUND' ? (
           <div className="w3-panel w3-red w3-card-4">
+            <h2>404</h2>
             <h3>question not found. please go to home for current questions</h3>
           </div>
         ) : status === 'ANSWERED' ? (
