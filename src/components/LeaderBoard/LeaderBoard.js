@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import withLayout from '../Layout/Layout'
 import './LeaderBoard.css'
 import Score from './Score'
 
 class LeaderBoard extends Component {
   render() {
-    console.log('Leaderboard App render')
     return (
       <Fragment>
         <div className="leaderBoard">
@@ -55,4 +55,4 @@ LeaderBoard.propTypes = {
   ),
 }
 
-export default connect(mapStateToProps)(LeaderBoard)
+export default withLayout(connect(mapStateToProps)(LeaderBoard))

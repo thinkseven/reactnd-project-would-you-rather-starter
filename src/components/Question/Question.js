@@ -2,14 +2,18 @@ import React, { Fragment, Component } from 'react'
 import { connect } from 'react-redux'
 import SubmitQuestionPoll from './SubmitPoll/SubmitPoll'
 import ViewPoll from './ViewPoll/ViewPoll'
+import withLayout from '../Layout/Layout'
 
 class Question extends Component {
   render() {
-    console.log('Question Component render')
-    const { isAnswered } = this.props
+    const { status } = this.props
     return (
       <Fragment>
-        {isAnswered ? (
+        {status === 'NOT FOUND' ? (
+          <div className="w3-panel w3-red w3-card-4">
+            <h3>question not found. please go to home for current questions</h3>
+          </div>
+        ) : status === 'ANSWERED' ? (
           <ViewPoll {...this.props} />
         ) : (
           <SubmitQuestionPoll {...this.props} />
@@ -19,14 +23,11 @@ class Question extends Component {
   }
 }
 
-const mapStateToProps = (
-  { authedUser, users = {}, questions = {} },
-  { match },
-) => {
+const mapStateToProps = ({ authedUser, users, questions }, { match }) => {
   const id = match.params.question_id
-  if (users && questions) {
+  if (questions && questions[id]) {
     if (Object.keys(users[authedUser.id].answers).includes(id)) {
-      // check is question answered or not by the current user
+      // check if this question answered or not by the current user
       // question answered by current user: ready for poll view
       // View Poll Question Format
       const formatOption1 = (option, totalVote) => ({
@@ -46,10 +47,10 @@ const mapStateToProps = (
       }
 
       return {
+        status: 'ANSWERED',
         name: users[questions[id].author].name,
         avatarURL: users[questions[id].author].avatarURL,
         options: getOptions1(questions[id]),
-        isAnswered: true,
       }
     } else {
       // question not answered by current user: ask to submit question
@@ -67,7 +68,7 @@ const mapStateToProps = (
       }
 
       return {
-        isAnswered: false,
+        status: 'UNANSWERED',
         name: users[questions[id].author].name,
         avatarURL: users[questions[id].author].avatarURL,
         authedUser: authedUser.id,
@@ -75,7 +76,11 @@ const mapStateToProps = (
         options: getOptions2(questions[id], id),
       }
     }
+  } else {
+    return {
+      status: 'NOT FOUND',
+    }
   }
 }
 
-export default connect(mapStateToProps)(Question)
+export default withLayout(connect(mapStateToProps)(Question))

@@ -2,11 +2,11 @@ import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Question from './Question'
+import withLayout from '../Layout/Layout'
 import './Home.css'
 
 class Home extends Component {
   render() {
-    console.log('Home Component render')
     const { answeredQuestions, unansweredQuestions } = this.props
     return (
       <Fragment>
@@ -122,4 +122,4 @@ Home.propTypes = {
   ),
 }
 
-export default connect(mapStateToProps)(Home)
+export default withLayout(connect(mapStateToProps)(Home))

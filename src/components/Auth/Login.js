@@ -11,10 +11,17 @@ class Login extends Component {
   }
 
   changeUser = user => {
-    this.setState({
-      currentUser: user,
-      errorMsg: '',
-    })
+    if (user !== '-- Select Login User --' && user !== '') {
+      this.setState({
+        currentUser: user,
+        errorMsg: '',
+      })
+    } else {
+      this.setState({
+        currentUser: '',
+        errorMsg: 'Error: Please select the userid!!',
+      })
+    }
   }
 
   handleLogin = () => {
@@ -30,7 +37,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log('login render')
     return (
       <Fragment>
         <Header />
@@ -48,12 +54,8 @@ class Login extends Component {
               </label>
               <select
                 name="uname"
-                onChange={e => {
-                  console.log(e.target.value)
-                  if (e.target.value !== '-- Select Login User --') {
-                    this.changeUser(e.target.value)
-                  }
-                }}>
+                onChange={e => this.changeUser(e.target.value)}
+              >
                 <option>-- Select Login User --</option>
                 <option value="sarahedo">Sarah Edo</option>
                 <option value="tylermcginnis">Tyler McGinnis</option>

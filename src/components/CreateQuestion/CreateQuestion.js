@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { AddQuestion } from '../../actions/shared'
 import './CreateQuestion.css'
+import withLayout from '../Layout/Layout'
 
 class CreateQuestion extends Component {
   state = {
@@ -111,4 +112,4 @@ CreateQuestion.propTypes = {
   author: PropTypes.string,
 }
 
-export default connect(mapStateToProps)(CreateQuestion)
+export default withLayout(connect(mapStateToProps)(CreateQuestion))
